@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { LangSwitcher } from '../LangSwitcher/LangSwitcher'
 import { Lightbox } from '../Lightbox/Lightbox'
 import type { Project, Language, LightboxState } from '../../types'
@@ -28,6 +28,26 @@ interface ProjectDetailProps {
 export function ProjectDetail({ project, lang, setLang, isMobile, onClose, t }: ProjectDetailProps) {
   const [lightbox, setLightbox] = useState<LightboxState | null>(null)
   const p = project
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (lightbox) {
+        const shots = p.storyboard
+        if (e.key === 'ArrowRight' && lightbox.idx < shots.length - 1) {
+          setLightbox({ src: shots[lightbox.idx + 1].src, idx: lightbox.idx + 1 })
+        }
+        if (e.key === 'ArrowLeft' && lightbox.idx > 0) {
+          setLightbox({ src: shots[lightbox.idx - 1].src, idx: lightbox.idx - 1 })
+        }
+        if (e.key === 'Escape') setLightbox(null)
+        return
+      }
+      if (e.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [lightbox, p.storyboard, onClose])
   const brief = lang === 'en' ? (p.brief_en || p.brief) : p.brief
   const description = lang === 'en' ? (p.description_en || p.description) : p.description
 

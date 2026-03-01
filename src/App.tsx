@@ -87,17 +87,6 @@ export function App() {
     if (found) setProj(found)
   }, [loading])
 
-  // Keyboard shortcuts
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && proj) {
-        setPageVis(false)
-        setTimeout(() => { setProj(null); setPageVis(true) }, 280)
-      }
-    }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [proj])
 
   const openProject = (p: Project) => {
     setPageVis(false)
