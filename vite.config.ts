@@ -5,7 +5,7 @@ import path from 'node:path'
 import fs from 'node:fs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const mediaRoot = path.resolve(__dirname, 'Сайт резервный')
+const mediaRoot = path.resolve(__dirname, 'media')
 
 function mediaPlugin() {
   return {
