@@ -33,8 +33,16 @@ Thumbs.db
 # Vite cache
 .vite/
 
-# Media files (large — keep locally only)
+# Media files — stored in Cloudflare R2, never commit to git
 media/
+*.mp4
+*.mov
+*.webp
+*.jpg
+*.jpeg
+*.png
+*.avif
 
 # Claude Code
 .claude/
+.vercel
