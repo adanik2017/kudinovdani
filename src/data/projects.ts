@@ -239,7 +239,7 @@ export const projects: Project[] = [
     brief_en: "An ad film for Eclipse gum — the studio's earliest work, August 2025. Hybrid format: live-action combined with AI generation. An experiment at the intersection of real and generated — the freshness of the product conveyed through the visual contrast of a real moment and a neural-network environment.",
     duration: '0:43',
     tools: ['Kling 3', 'DaVinci Resolve', 'Suno', 'SFX'],
-    image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Eclipse/shot_12.webp',
+    image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Eclipse/cover.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Eclipse/eclipse.mp4',
     palette: ['#050508', '#0a0f12', '#0d1e24', '#1a3038', '#6b0a08', '#c01808', '#c87010', '#e0a030', '#d8cfc0'],
     storyboard: [
