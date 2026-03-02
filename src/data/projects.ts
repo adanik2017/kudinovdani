@@ -206,7 +206,7 @@ export const projects: Project[] = [
     brief_en: 'The goal: capture the character of the new flavor through city energy and authentic emotion. The brand wanted to move away from studio production in favor of a real environment and genuine mood.',
     duration: '1:13',
     tools: ['Kling 2.5', 'Nana Banana Pro', 'After Effects', 'DaVinci Resolve', 'Suno', 'SFX'],
-    image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/lit%20energy/Timeline%201_01_00_02_10.webp',
+    image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/lit%20energy/cover.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/lit%20energy/lit_energy.mp4',
     palette: ['#080806', '#1c1408', '#3a2810', '#6b4415', '#a85a18', '#c44a08', '#d4620a', '#e07820', '#f09040', '#f8c090'],
     storyboard: [
