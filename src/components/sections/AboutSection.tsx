@@ -52,7 +52,7 @@ export function AboutSection({ isMobile, t }: AboutSectionProps) {
                   }}>
                     <div style={{ width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden' }}>
                       <img
-                        src="/%D0%AF/2026-02-27%2021.39.22.jpg"
+                        src="https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/%D0%AF/daniil.webp"
                         alt="Даниил Кудинов"
                         style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 8%' }}
                       />
