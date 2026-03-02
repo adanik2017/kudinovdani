@@ -181,7 +181,7 @@ export const projects: Project[] = [
     brief_en: 'An ad film for Lit Energy in the aesthetic of Stranger Things. The Upside Down, dark tunnels, red light through fog — the energy drink as a portal to another dimension. The atmosphere of the iconic series in service of the brand.',
     duration: '0:34',
     tools: ['Kling 3', 'Seedance 2', 'After Effects', 'DaVinci Resolve', 'Suno', 'SFX'],
-    image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Lit%20enegry%20Stranger%20things/11.webp',
+    image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Lit%20enegry%20Stranger%20things/cover.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Lit%20enegry%20Stranger%20things/strangers.mp4',
     palette: ['#0a1018', '#0d1e2c', '#1a3040', '#0e4a5c', '#1a7a8a', '#28a0b0', '#e8f4f8', '#c0e8f0', '#80d0e0', '#40b8d0'],
     storyboard: [
