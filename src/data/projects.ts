@@ -149,7 +149,7 @@ export const projects: Project[] = [
     brief_en: "Yunus Kuduzov — Chechnya's top wedding videographer — launched his first original wedding cinematography course. The goal: create an ad that conveys the aesthetics and quality of his work, builds trust with future students, and drives enrollment. The concept: a samurai as a metaphor for mastery — precision, discipline, beauty. The film brought over 10 students and revenue exceeding 1,000,000 ₽.",
     duration: '1:25',
     tools: ['Kling 3', 'DaVinci Resolve', 'Suno', 'SFX', 'After Effects'],
-    image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Samurai/shot_01.webp',
+    image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Samurai/cover.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Samurai/kuduzov.mp4',
     palette: ['#1a1410', '#2e2018', '#4a3428', '#6b5040', '#8a7060', '#a89080', '#c4b0a0', '#e0d0c8', '#5a4838', '#3c2c20'],
     storyboard: [
