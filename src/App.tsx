@@ -18,7 +18,12 @@ export function App() {
   const [loading, setLoading] = useState(true)
   const [prog, setProg] = useState(0)
   const [cat, setCat] = useState('ИИ-ВИДЕО')
-  const [proj, setProj] = useState<Project | null>(null)
+  const [proj, setProj] = useState<Project | null>(() => {
+    const hash = window.location.hash
+    if (!hash.startsWith('#project-')) return null
+    const id = parseInt(hash.replace('#project-', ''), 10)
+    return projects.find(p => p.id === id) ?? null
+  })
   const [pageVis, setPageVis] = useState(true)
   const [copied, setCopied] = useState<number | null>(null)
   const [lang, setLang] = useState<Language>('ru')
@@ -76,16 +81,6 @@ export function App() {
       history.replaceState(null, '', window.location.pathname)
     }
   }, [proj])
-
-  // Restore project from URL hash on load
-  useEffect(() => {
-    if (loading) return
-    const hash = window.location.hash
-    if (!hash.startsWith('#project-')) return
-    const id = parseInt(hash.replace('#project-', ''), 10)
-    const found = projects.find(p => p.id === id)
-    if (found) setProj(found)
-  }, [loading])
 
 
   const openProject = (p: Project) => {
