@@ -134,7 +134,7 @@ export function ProjectCard({
           <button
             onClick={onShare}
             style={{
-              background: '#fff', border: '1px solid #fff', color: '#000',
+              background: 'none', border: '1px solid #444', color: '#aaa',
               cursor: 'pointer', fontSize: '9px', letterSpacing: '0.2em',
               fontFamily: 'inherit', padding: '4px 12px', flexShrink: 0,
               transition: 'all .2s',
