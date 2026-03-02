@@ -77,7 +77,7 @@ export const projects: Project[] = [
     brief_en: 'A personal AI film with no client or brief — a pure visual experiment. FPV perspective, snowy landscapes, tactical aesthetics. An exploration of how neural networks convey speed, danger, and space.',
     duration: '2:09',
     tools: ['Kling 3', 'Weavy', 'After Effects', 'DaVinci Resolve', 'Suno', 'SFX'],
-    image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Военый%20ролик/clip_%7B1%7D.png00086400.webp',
+    image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Военый%20ролик/%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Военый%20ролик/sebe_rils.mp4',
     palette: ['#8b9fa3', '#5a757c', '#1e2c2f', '#d0cdc1', '#58574a', '#0a0f0e'],
     storyboard: [
