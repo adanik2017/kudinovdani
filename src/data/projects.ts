@@ -271,7 +271,7 @@ export const projects: Project[] = [
     brief_en: 'A hybrid ad for Jacobs Monarch. Live-action footage shot on Sony FX3 is organically combined with AI-generated scenes — the cinematic quality of a real shot meets the visual possibilities of neural networks. The product atmosphere is conveyed through imagery and mood, not direct advertising.',
     duration: '1:17',
     tools: ['Sony FX3', 'Kling 3', 'DaVinci Resolve', 'Suno', 'SFX'],
-    image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Jacobs%20monarch/Снимок%20экрана%202026-02-28%20в%2002.13.16.webp',
+    image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Jacobs%20monarch/cover.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Jacobs%20monarch/jacobs.mp4',
     palette: ['#0a1018', '#0d1e2c', '#1a3040', '#0e4a5c', '#1a7a8a', '#28a0b0', '#e8f4f8', '#c0e8f0', '#80d0e0', '#40b8d0'],
     storyboard: [
