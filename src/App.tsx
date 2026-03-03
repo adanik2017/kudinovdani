@@ -19,9 +19,9 @@ export function App() {
   const [prog, setProg] = useState(0)
   const [cat, setCat] = useState('ИИ-ВИДЕО')
   const [proj, setProj] = useState<Project | null>(() => {
-    const hash = window.location.hash
-    if (!hash.startsWith('#project-')) return null
-    const id = parseInt(hash.replace('#project-', ''), 10)
+    const path = window.location.pathname
+    if (!path.startsWith('/project/')) return null
+    const id = parseInt(path.replace('/project/', ''), 10)
     return projects.find(p => p.id === id) ?? null
   })
   const [pageVis, setPageVis] = useState(true)
@@ -76,9 +76,9 @@ export function App() {
   useEffect(() => {
     window.scrollTo(0, 0)
     if (proj) {
-      history.replaceState(null, '', '#project-' + proj.id)
+      history.pushState(null, '', '/project/' + proj.id)
     } else {
-      history.replaceState(null, '', window.location.pathname)
+      history.pushState(null, '', '/')
     }
   }, [proj])
 
@@ -95,7 +95,7 @@ export function App() {
 
   const shareProject = (e: React.MouseEvent, id: number) => {
     e.stopPropagation()
-    const url = window.location.href.split('#')[0] + '#project-' + id
+    const url = window.location.origin + '/project/' + id
     navigator.clipboard.writeText(url).then(() => {
       setCopied(id)
       setTimeout(() => setCopied(null), 2000)
