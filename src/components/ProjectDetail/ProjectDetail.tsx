@@ -262,8 +262,8 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
         </div>
       </div>
 
-      {/* Mobile swipe nav */}
-      {isPhone && (
+      {/* Nav — mobile: bottom bar, desktop: floating side arrows */}
+      {isPhone ? (
         <div style={{
           position: 'fixed', bottom: 0, left: 0, right: 0,
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -285,11 +285,9 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
             </svg>
             ПРЕД
           </button>
-
           <span style={{ color: '#333', fontSize: '9px', letterSpacing: '0.4em' }}>
             {String(projIdx + 1).padStart(2, '0')} / {String(projTotal).padStart(2, '0')}
           </span>
-
           <button
             onClick={onNext ?? undefined}
             disabled={!onNext}
@@ -306,6 +304,51 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
             </svg>
           </button>
         </div>
+      ) : (
+        <>
+          {onPrev && (
+            <button
+              onClick={onPrev}
+              style={{
+                position: 'fixed', left: '16px', top: '50%', transform: 'translateY(-50%)',
+                background: 'none', border: '1px solid #222', color: '#555',
+                cursor: 'pointer', zIndex: 50, padding: '16px 12px',
+                transition: 'all .2s', display: 'flex', flexDirection: 'column',
+                alignItems: 'center', gap: '12px',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#555' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#555'; e.currentTarget.style.borderColor = '#222' }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+              <span style={{ fontSize: '8px', letterSpacing: '0.3em', writingMode: 'vertical-rl', fontFamily: 'inherit' }}>
+                ПРЕД
+              </span>
+            </button>
+          )}
+          {onNext && (
+            <button
+              onClick={onNext}
+              style={{
+                position: 'fixed', right: '16px', top: '50%', transform: 'translateY(-50%)',
+                background: 'none', border: '1px solid #222', color: '#555',
+                cursor: 'pointer', zIndex: 50, padding: '16px 12px',
+                transition: 'all .2s', display: 'flex', flexDirection: 'column',
+                alignItems: 'center', gap: '12px',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#555' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#555'; e.currentTarget.style.borderColor = '#222' }}
+            >
+              <span style={{ fontSize: '8px', letterSpacing: '0.3em', writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontFamily: 'inherit' }}>
+                СЛЕД
+              </span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          )}
+        </>
       )}
 
       {/* Lightbox */}
