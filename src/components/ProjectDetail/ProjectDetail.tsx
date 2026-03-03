@@ -198,13 +198,6 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
           </div>
         </div>
 
-        {/* Description */}
-        <div style={{ order: 3, marginBottom: '56px', maxWidth: '600px', paddingTop: isMobile ? '20px' : '0' }}>
-          <p style={{ color: '#999', fontSize: '13px', lineHeight: '1.9', marginBottom: '16px' }}>{description}</p>
-          <p style={{ color: '#666', fontSize: '13px', lineHeight: '1.9' }}>
-            {p.category === 'ИИ-ВИДЕО' ? t.aiNote : t.hybridNote}
-          </p>
-        </div>
 
         {/* Color palette */}
         <div style={{ order: 4, marginBottom: '48px' }}>
