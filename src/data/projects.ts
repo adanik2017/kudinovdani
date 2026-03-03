@@ -16,6 +16,11 @@ export const projects: Project[] = [
     tools: ['Story Prompt', 'Kling 3', 'Nana Banana 2', 'Seedance 2', 'DaVinci Resolve', 'SFX'],
     image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/СФЕРОТЕХ/cover.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/СФЕРОТЕХ/sferotech.mp4',
+    videoVersions: [
+      { label: 'RU', src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/СФЕРОТЕХ/sferotech.mp4' },
+      { label: 'EN', src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/СФЕРОТЕХ/sferotech_en.mp4' },
+      { label: 'ZH', src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/СФЕРОТЕХ/sferotech_zh.mp4' },
+    ],
     palette: ['#0b0d11', '#1a2a3a', '#60605f', '#9ca293', '#e0d6ad', '#552c1f'],
     storyboard: [
       { src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/СФЕРОТЕХ/shot_01.webp', label: '01' },

@@ -20,6 +20,7 @@ export interface Project {
   tools: string[]
   image: string
   video: string
+  videoVersions?: { label: string; src: string }[]
   palette: string[]
   storyboard: StoryboardFrame[]
 }

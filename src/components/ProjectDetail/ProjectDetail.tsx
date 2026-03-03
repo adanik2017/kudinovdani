@@ -27,7 +27,9 @@ interface ProjectDetailProps {
 
 export function ProjectDetail({ project, lang, setLang, isMobile, onClose, t }: ProjectDetailProps) {
   const [lightbox, setLightbox] = useState<LightboxState | null>(null)
+  const [videoLang, setVideoLang] = useState(0)
   const p = project
+  const activeVideo = p.videoVersions ? p.videoVersions[videoLang].src : p.video
 
   // Keyboard navigation
   useEffect(() => {
@@ -141,16 +143,38 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, t }: 
         </div>
 
         {/* Video */}
-        <div style={{ margin: '48px 0', background: '#050505' }}>
-          <video
-            controls
-            playsInline
-            preload="metadata"
-            style={{ width: '100%', display: 'block' }}
-            poster={p.image}
-          >
-            <source src={p.video} type="video/mp4" />
-          </video>
+        <div style={{ margin: '48px 0' }}>
+          {p.videoVersions && (
+            <div style={{ display: 'flex', gap: '6px', marginBottom: '10px' }}>
+              {p.videoVersions.map((v, i) => (
+                <button
+                  key={v.label}
+                  onClick={() => setVideoLang(i)}
+                  style={{
+                    background: videoLang === i ? '#fff' : 'none',
+                    border: '1px solid ' + (videoLang === i ? '#fff' : '#333'),
+                    color: videoLang === i ? '#000' : '#555',
+                    cursor: 'pointer', fontSize: '9px', letterSpacing: '0.3em',
+                    fontFamily: 'inherit', padding: '5px 14px', transition: 'all .2s',
+                  }}
+                >
+                  {v.label}
+                </button>
+              ))}
+            </div>
+          )}
+          <div style={{ background: '#050505' }}>
+            <video
+              key={activeVideo}
+              controls
+              playsInline
+              preload="metadata"
+              style={{ width: '100%', display: 'block' }}
+              poster={p.image}
+            >
+              <source src={activeVideo} type="video/mp4" />
+            </video>
+          </div>
         </div>
 
         {/* Description */}
