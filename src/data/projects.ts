@@ -16,6 +16,7 @@ export const projects: Project[] = [
     tools: ['Story Prompt', 'Kling 3', 'Nana Banana 2', 'Seedance 2', 'DaVinci Resolve', 'SFX'],
     image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/СФЕРОТЕХ/cover.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/СФЕРОТЕХ/sferotech.mp4',
+    preview: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/СФЕРОТЕХ/preview.mp4',
     videoVersions: [
       { label: 'RU', src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/СФЕРОТЕХ/sferotech.mp4' },
       { label: 'EN', src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/СФЕРОТЕХ/sferotech_en.mp4' },
@@ -55,6 +56,7 @@ export const projects: Project[] = [
     tools: ['Kling 3', 'Suno', 'DaVinci Resolve', 'SFX'],
     image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Тизер%20к%20фильму%20/%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Тизер%20к%20фильму%20/teaser.mp4',
+    preview: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Тизер%20к%20фильму%20/preview.mp4',
     palette: ['#667477', '#303738', '#0c0e0d', '#792c24', '#38110d', '#967b6a'],
     storyboard: [
       { src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Тизер%20к%20фильму%20/11.webp', label: '01' },
@@ -84,6 +86,7 @@ export const projects: Project[] = [
     tools: ['Kling 3', 'Weavy', 'After Effects', 'DaVinci Resolve', 'Suno', 'SFX'],
     image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Военый%20ролик/%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Военый%20ролик/sebe_rils.mp4',
+    preview: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Военый%20ролик/preview.mp4',
     palette: ['#8b9fa3', '#5a757c', '#1e2c2f', '#d0cdc1', '#58574a', '#0a0f0e'],
     storyboard: [
       { src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Военый%20ролик/clip_%7B1%7D.png00086400.webp', label: '01' },
@@ -120,6 +123,7 @@ export const projects: Project[] = [
     tools: ['Nana Banana Pro', 'Kling 2.5', 'Premiere Pro', 'DaVinci Resolve', 'Suno', 'SFX'],
     image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Пиксар%20Кока%20кола/обложка.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Пиксар%20Кока%20кола/coca_cola.mp4',
+    preview: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Пиксар%20Кока%20кола/preview.mp4',
     palette: ['#140c08', '#3a1e0c', '#6a3818', '#8a4820', '#d4780a', '#f0a030', '#2a3e1c', '#1e2a3c', '#c04028', '#e8e0c0'],
     storyboard: [
       { src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Пиксар%20Кока%20кола/%2021.webp', label: '01' },
@@ -156,6 +160,7 @@ export const projects: Project[] = [
     tools: ['Kling 3', 'DaVinci Resolve', 'Suno', 'SFX', 'After Effects'],
     image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Samurai/cover.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Samurai/kuduzov.mp4',
+    preview: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Samurai/preview.mp4',
     palette: ['#1a1410', '#2e2018', '#4a3428', '#6b5040', '#8a7060', '#a89080', '#c4b0a0', '#e0d0c8', '#5a4838', '#3c2c20'],
     storyboard: [
       { src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Samurai/shot_01.webp', label: '01' },
@@ -188,6 +193,7 @@ export const projects: Project[] = [
     tools: ['Kling 3', 'Seedance 2', 'After Effects', 'DaVinci Resolve', 'Suno', 'SFX'],
     image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Lit%20enegry%20Stranger%20things/cover.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Lit%20enegry%20Stranger%20things/strangers.mp4',
+    preview: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Lit%20enegry%20Stranger%20things/preview.mp4',
     palette: ['#0a1018', '#0d1e2c', '#1a3040', '#0e4a5c', '#1a7a8a', '#28a0b0', '#e8f4f8', '#c0e8f0', '#80d0e0', '#40b8d0'],
     storyboard: [
       { src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Lit%20enegry%20Stranger%20things/11.webp', label: '01' },
@@ -213,6 +219,7 @@ export const projects: Project[] = [
     tools: ['Kling 2.5', 'Nana Banana Pro', 'After Effects', 'DaVinci Resolve', 'Suno', 'SFX'],
     image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/lit%20energy/cover.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/lit%20energy/lit_energy.mp4',
+    preview: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/lit%20energy/preview.mp4',
     palette: ['#080806', '#1c1408', '#3a2810', '#6b4415', '#a85a18', '#c44a08', '#d4620a', '#e07820', '#f09040', '#f8c090'],
     storyboard: [
       { src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/lit%20energy/Timeline%201_01_00_00_01.webp', label: '01' },
@@ -246,6 +253,7 @@ export const projects: Project[] = [
     tools: ['Kling 3', 'DaVinci Resolve', 'Suno', 'SFX'],
     image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Eclipse/cover.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Eclipse/eclipse.mp4',
+    preview: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Eclipse/preview.mp4',
     palette: ['#050508', '#0a0f12', '#0d1e24', '#1a3038', '#6b0a08', '#c01808', '#c87010', '#e0a030', '#d8cfc0'],
     storyboard: [
       { src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Eclipse/shot_01.webp', label: '01' },
@@ -278,6 +286,7 @@ export const projects: Project[] = [
     tools: ['Sony FX3', 'Kling 3', 'DaVinci Resolve', 'Suno', 'SFX'],
     image: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Jacobs%20monarch/cover.webp',
     video: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Jacobs%20monarch/jacobs.mp4',
+    preview: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Jacobs%20monarch/preview.mp4',
     palette: ['#0a1018', '#0d1e2c', '#1a3040', '#0e4a5c', '#1a7a8a', '#28a0b0', '#e8f4f8', '#c0e8f0', '#80d0e0', '#40b8d0'],
     storyboard: [
       { src: 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev/Jacobs%20monarch/shot_01.webp', label: '01' },

@@ -63,7 +63,7 @@ export function ProjectCard({
         />
         {!isMobile && (
           <video
-            src={p.video}
+            src={p.preview}
             muted
             loop
             playsInline
