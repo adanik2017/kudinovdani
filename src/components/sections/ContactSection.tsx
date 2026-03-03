@@ -53,6 +53,7 @@ export function ContactSection({ isMobile, t }: ContactSectionProps) {
                 href="https://t.me/kudinovdani"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => (window as any).ym?.(107083695, 'reachGoal', 'click_contact')}
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: '10px',
                   padding: '14px 28px', background: '#fff', color: '#000',

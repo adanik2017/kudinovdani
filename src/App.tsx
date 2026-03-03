@@ -84,6 +84,7 @@ export function App() {
 
 
   const openProject = (p: Project) => {
+    ;(window as any).ym?.(107083695, 'reachGoal', 'open_project', { project: p.title })
     setPageVis(false)
     setTimeout(() => { setProj(p); setPageVis(true) }, 280)
   }
