@@ -126,14 +126,14 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
       }}>
         {/* Project header */}
         <div style={{
-          order: isPhone ? 2 : 1,
-          padding: isPhone ? '20px 0' : '60px 0',
-          borderBottom: isPhone ? 'none' : '1px solid #0d0d0d',
+          order: 2,
+          padding: isPhone ? '20px 0' : '40px 0',
+          borderBottom: 'none',
         }}>
           <p style={{ color: '#666', fontSize: '9px', letterSpacing: '0.45em', marginBottom: '12px' }}>
             {t.catName[p.category] || p.category} / {p.date}
           </p>
-          <h1 className="brand" style={{ fontSize: isPhone ? 'clamp(36px,9vw,60px)' : 'clamp(50px,8vw,110px)', lineHeight: 0.9, marginBottom: isPhone ? '20px' : '40px' }}>
+          <h1 className="brand" style={{ fontSize: isPhone ? 'clamp(36px,9vw,60px)' : 'clamp(44px,5vw,80px)', lineHeight: 0.9, marginBottom: isPhone ? '20px' : '32px' }}>
             {p.title}
           </h1>
 
@@ -171,7 +171,7 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
         </div>
 
         {/* Video */}
-        <div style={{ order: isPhone ? 1 : 2, margin: isPhone ? '0 -20px 0' : '48px 0' }}>
+        <div style={{ order: 1, margin: isPhone ? '0 -20px 0' : '0 0 0' }}>
           {p.videoVersions && !isPhone && (
             <div style={{ display: 'flex', gap: '6px', marginBottom: '10px' }}>
               {p.videoVersions.map((v, i) => (
