@@ -32,6 +32,13 @@ interface ProjectDetailProps {
 export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPrev, onNext, projIdx, projTotal, t }: ProjectDetailProps) {
   const [lightbox, setLightbox] = useState<LightboxState | null>(null)
   const [videoLang, setVideoLang] = useState(0)
+  // detect touch device regardless of orientation
+  const [isPhone, setIsPhone] = useState(() => window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768)
+  useEffect(() => {
+    const fn = () => setIsPhone(window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768)
+    window.addEventListener('resize', fn)
+    return () => window.removeEventListener('resize', fn)
+  }, [])
   const p = project
   const activeVideo = p.videoVersions ? p.videoVersions[videoLang].src : p.video
   const touchStartX = useRef<number | null>(null)
@@ -83,10 +90,10 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
       <header style={{
         position: 'fixed', top: 0, left: 0, width: '100%',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        padding: isMobile ? '14px 20px' : '20px 48px',
+        padding: isPhone ? '14px 20px' : '20px 48px',
         background: '#000', zIndex: 50, borderBottom: '1px solid #0d0d0d',
       }}>
-        <div className="brand" style={{ fontSize: isMobile ? '14px' : '20px', letterSpacing: '0.15em' }}>
+        <div className="brand" style={{ fontSize: isPhone ? '14px' : '20px', letterSpacing: '0.15em' }}>
           KUDINOV FILMS
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -113,24 +120,24 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
 
       <div style={{
         paddingTop: '80px',
-        padding: isMobile ? '60px 20px 0' : '80px 48px 0',
+        padding: isPhone ? '60px 20px 0' : '80px 48px 0',
         maxWidth: '1600px', margin: '0 auto',
         display: 'flex', flexDirection: 'column',
       }}>
         {/* Project header */}
         <div style={{
-          order: isMobile ? 2 : 1,
-          padding: isMobile ? '20px 0' : '60px 0',
-          borderBottom: isMobile ? 'none' : '1px solid #0d0d0d',
+          order: isPhone ? 2 : 1,
+          padding: isPhone ? '20px 0' : '60px 0',
+          borderBottom: isPhone ? 'none' : '1px solid #0d0d0d',
         }}>
           <p style={{ color: '#666', fontSize: '9px', letterSpacing: '0.45em', marginBottom: '12px' }}>
             {t.catName[p.category] || p.category} / {p.date}
           </p>
-          <h1 className="brand" style={{ fontSize: isMobile ? 'clamp(36px,9vw,60px)' : 'clamp(50px,8vw,110px)', lineHeight: 0.9, marginBottom: isMobile ? '20px' : '40px' }}>
+          <h1 className="brand" style={{ fontSize: isPhone ? 'clamp(36px,9vw,60px)' : 'clamp(50px,8vw,110px)', lineHeight: 0.9, marginBottom: isPhone ? '20px' : '40px' }}>
             {p.title}
           </h1>
 
-          <div style={{ display: 'flex', gap: isMobile ? '16px' : '48px', marginBottom: '24px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: isPhone ? '16px' : '48px', marginBottom: '24px', flexWrap: 'wrap' }}>
             {meta.map(([k, v]) => (
               <div key={k}>
                 <p style={{ color: '#666', fontSize: '9px', letterSpacing: '0.4em', marginBottom: '6px' }}>{k}</p>
@@ -164,8 +171,8 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
         </div>
 
         {/* Video */}
-        <div style={{ order: isMobile ? 1 : 2, margin: isMobile ? '0 -20px 0' : '48px 0' }}>
-          {p.videoVersions && !isMobile && (
+        <div style={{ order: isPhone ? 1 : 2, margin: isPhone ? '0 -20px 0' : '48px 0' }}>
+          {p.videoVersions && !isPhone && (
             <div style={{ display: 'flex', gap: '6px', marginBottom: '10px' }}>
               {p.videoVersions.map((v, i) => (
                 <button
@@ -196,7 +203,7 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
               <source src={activeVideo} type="video/mp4" />
             </video>
           </div>
-          {p.videoVersions && isMobile && (
+          {p.videoVersions && isPhone && (
             <div style={{ display: 'flex', gap: '6px', padding: '10px 20px 0' }}>
               {p.videoVersions.map((v, i) => (
                 <button
@@ -235,7 +242,7 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
         <div style={{
           order: 6,
           display: 'grid',
-          gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(4,1fr)',
+          gridTemplateColumns: isPhone ? 'repeat(2,1fr)' : 'repeat(4,1fr)',
           gap: '6px', paddingBottom: '64px',
         }}>
           {p.storyboard.map((s, i) => (
@@ -256,7 +263,7 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
       </div>
 
       {/* Mobile swipe nav */}
-      {isMobile && (
+      {isPhone && (
         <div style={{
           position: 'fixed', bottom: 0, left: 0, right: 0,
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
