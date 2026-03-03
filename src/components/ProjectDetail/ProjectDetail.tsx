@@ -26,6 +26,9 @@ interface ProjectDetailProps {
     storyboard: string
     aiNote: string
     hybridNote: string
+    ctaFilmHeading: string
+    ctaFilmSub: string
+    telegram: string
   }
 }
 
@@ -285,6 +288,50 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
               <p style={{ color: '#666', fontSize: '9px', letterSpacing: '0.12em' }}>{s.label}</p>
             </div>
           ))}
+        </div>
+        {/* CTA after storyboard */}
+        <div style={{
+          order: 7,
+          borderTop: '1px solid #111',
+          margin: isPhone ? '0 0 0' : '0',
+          padding: isPhone ? '48px 0 32px' : '64px 0 48px',
+          display: 'flex',
+          flexDirection: isPhone ? 'column' : 'row',
+          alignItems: isPhone ? 'flex-start' : 'center',
+          justifyContent: 'space-between',
+          gap: '32px',
+        }}>
+          <div>
+            <h2 className="brand" style={{
+              fontSize: isPhone ? 'clamp(32px,9vw,52px)' : 'clamp(36px,3.5vw,60px)',
+              lineHeight: 0.9, marginBottom: '16px', color: '#fff',
+            }}>
+              {t.ctaFilmHeading}
+            </h2>
+            <p style={{ color: '#555', fontSize: '13px', lineHeight: '1.8', maxWidth: '400px', margin: 0 }}>
+              {t.ctaFilmSub}
+            </p>
+          </div>
+          <a
+            href="https://t.me/kudinovdani"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => (window as any).ym?.(107083695, 'reachGoal', 'click_contact')}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '10px',
+              padding: '16px 36px', background: '#fff', color: '#000',
+              textDecoration: 'none', fontSize: '10px', letterSpacing: '0.35em',
+              fontFamily: "'Bebas Neue',sans-serif", transition: 'all 0.2s',
+              flexShrink: 0,
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#ddd' }}
+            onMouseLeave={e => { e.currentTarget.style.background = '#fff' }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.05 9.656c-.148.658-.543.818-1.1.508l-3.05-2.246-1.47 1.415c-.163.163-.3.3-.614.3l.22-3.1 5.64-5.095c.245-.22-.054-.34-.38-.12L6.93 14.41l-3-.935c-.654-.204-.667-.654.136-.968l11.69-4.508c.544-.197 1.02.132.807.25z" />
+            </svg>
+            {t.telegram}
+          </a>
         </div>
       </div>
 
