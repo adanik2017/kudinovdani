@@ -68,11 +68,32 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
         if (e.key === 'Escape') setLightbox(null)
         return
       }
+      if (e.key === 'ArrowRight' && onNext) onNext()
+      if (e.key === 'ArrowLeft' && onPrev) onPrev()
       if (e.key === 'Escape') onClose()
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [lightbox, p.storyboard, onClose])
+  }, [lightbox, p.storyboard, onClose, onPrev, onNext])
+
+  // Trackpad horizontal swipe
+  useEffect(() => {
+    let accum = 0
+    let timer: ReturnType<typeof setTimeout> | null = null
+    const handler = (e: WheelEvent) => {
+      if (lightbox) return
+      if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return
+      accum += e.deltaX
+      if (timer) clearTimeout(timer)
+      timer = setTimeout(() => {
+        if (accum > 80 && onNext) onNext()
+        else if (accum < -80 && onPrev) onPrev()
+        accum = 0
+      }, 60)
+    }
+    window.addEventListener('wheel', handler, { passive: true })
+    return () => window.removeEventListener('wheel', handler)
+  }, [lightbox, onPrev, onNext])
   const brief = lang === 'en' ? (p.brief_en || p.brief) : p.brief
   const description = lang === 'en' ? (p.description_en || p.description) : p.description
 
@@ -276,14 +297,12 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
             style={{
               display: 'flex', alignItems: 'center', gap: '8px',
               background: 'none', border: 'none', cursor: onPrev ? 'pointer' : 'default',
-              color: onPrev ? '#888' : '#2a2a2a', fontSize: '10px', letterSpacing: '0.2em',
-              fontFamily: 'inherit', padding: '8px 0', transition: 'color .2s',
+              color: onPrev ? '#888' : '#2a2a2a', padding: '8px 0', transition: 'color .2s',
             }}
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M15 18l-6-6 6-6" />
             </svg>
-            ПРЕД
           </button>
           <span style={{ color: '#333', fontSize: '9px', letterSpacing: '0.4em' }}>
             {String(projIdx + 1).padStart(2, '0')} / {String(projTotal).padStart(2, '0')}
@@ -294,12 +313,10 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
             style={{
               display: 'flex', alignItems: 'center', gap: '8px',
               background: 'none', border: 'none', cursor: onNext ? 'pointer' : 'default',
-              color: onNext ? '#888' : '#2a2a2a', fontSize: '10px', letterSpacing: '0.2em',
-              fontFamily: 'inherit', padding: '8px 0', transition: 'color .2s',
+              color: onNext ? '#888' : '#2a2a2a', padding: '8px 0', transition: 'color .2s',
             }}
           >
-            СЛЕД
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M9 18l6-6-6-6" />
             </svg>
           </button>
@@ -312,19 +329,15 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
               style={{
                 position: 'fixed', left: '16px', top: '50%', transform: 'translateY(-50%)',
                 background: 'none', border: '1px solid #222', color: '#555',
-                cursor: 'pointer', zIndex: 50, padding: '16px 12px',
-                transition: 'all .2s', display: 'flex', flexDirection: 'column',
-                alignItems: 'center', gap: '12px',
+                cursor: 'pointer', zIndex: 50, padding: '20px 14px',
+                transition: 'all .2s', display: 'flex', alignItems: 'center',
               }}
               onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#555' }}
               onMouseLeave={e => { e.currentTarget.style.color = '#555'; e.currentTarget.style.borderColor = '#222' }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M15 18l-6-6 6-6" />
               </svg>
-              <span style={{ fontSize: '8px', letterSpacing: '0.3em', writingMode: 'vertical-rl', fontFamily: 'inherit' }}>
-                ПРЕД
-              </span>
             </button>
           )}
           {onNext && (
@@ -333,17 +346,13 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
               style={{
                 position: 'fixed', right: '16px', top: '50%', transform: 'translateY(-50%)',
                 background: 'none', border: '1px solid #222', color: '#555',
-                cursor: 'pointer', zIndex: 50, padding: '16px 12px',
-                transition: 'all .2s', display: 'flex', flexDirection: 'column',
-                alignItems: 'center', gap: '12px',
+                cursor: 'pointer', zIndex: 50, padding: '20px 14px',
+                transition: 'all .2s', display: 'flex', alignItems: 'center',
               }}
               onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#555' }}
               onMouseLeave={e => { e.currentTarget.style.color = '#555'; e.currentTarget.style.borderColor = '#222' }}
             >
-              <span style={{ fontSize: '8px', letterSpacing: '0.3em', writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontFamily: 'inherit' }}>
-                СЛЕД
-              </span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M9 18l6-6-6-6" />
               </svg>
             </button>
