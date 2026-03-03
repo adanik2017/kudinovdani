@@ -165,7 +165,7 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
 
         {/* Video */}
         <div style={{ order: isMobile ? 1 : 2, margin: isMobile ? '0 -20px 0' : '48px 0' }}>
-          {p.videoVersions && (
+          {p.videoVersions && !isMobile && (
             <div style={{ display: 'flex', gap: '6px', marginBottom: '10px' }}>
               {p.videoVersions.map((v, i) => (
                 <button
@@ -196,6 +196,25 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
               <source src={activeVideo} type="video/mp4" />
             </video>
           </div>
+          {p.videoVersions && isMobile && (
+            <div style={{ display: 'flex', gap: '6px', padding: '10px 20px 0' }}>
+              {p.videoVersions.map((v, i) => (
+                <button
+                  key={v.label}
+                  onClick={() => setVideoLang(i)}
+                  style={{
+                    background: videoLang === i ? '#fff' : 'none',
+                    border: '1px solid ' + (videoLang === i ? '#fff' : '#333'),
+                    color: videoLang === i ? '#000' : '#555',
+                    cursor: 'pointer', fontSize: '9px', letterSpacing: '0.3em',
+                    fontFamily: 'inherit', padding: '6px 16px', transition: 'all .2s',
+                  }}
+                >
+                  {v.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
 
