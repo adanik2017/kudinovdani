@@ -89,6 +89,11 @@ export function App() {
     setTimeout(() => { setProj(p); setPageVis(true) }, 280)
   }
 
+  const navToProject = (p: Project) => {
+    window.scrollTo(0, 0)
+    setProj(p)
+  }
+
   const closeProject = () => {
     setPageVis(false)
     setTimeout(() => { setProj(null); setPageVis(true) }, 280)
@@ -125,8 +130,8 @@ export function App() {
               setLang={setLang}
               isMobile={isMobile}
               onClose={closeProject}
-              onPrev={projIdx > 0 ? () => openProject(list[projIdx - 1]) : null}
-              onNext={projIdx < list.length - 1 ? () => openProject(list[projIdx + 1]) : null}
+              onPrev={projIdx > 0 ? () => navToProject(list[projIdx - 1]) : null}
+              onNext={projIdx < list.length - 1 ? () => navToProject(list[projIdx + 1]) : null}
               projIdx={projIdx}
               projTotal={list.length}
               t={t}

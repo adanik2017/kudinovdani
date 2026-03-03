@@ -21,6 +21,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const p = project
   const description = lang === 'en' ? (p.description_en || p.description) : p.description
+  const title = lang === 'en' ? (p.title_en || p.title) : p.title
   const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -127,7 +128,7 @@ export function ProjectCard({
               </svg>
             </div>
             <span className="brand" style={{ fontSize: '13px', letterSpacing: '0.15em', color: '#fff' }}>
-              {p.title}
+              {title}
             </span>
             <span style={{ marginLeft: 'auto', fontSize: '10px', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>
               {p.duration}
@@ -139,7 +140,7 @@ export function ProjectCard({
       {/* Info */}
       <div style={{ paddingTop: '14px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '6px' }}>
-          <p className="brand" style={{ fontSize: '18px', letterSpacing: '0.12em', color: '#fff' }}>{p.title}</p>
+          <p className="brand" style={{ fontSize: '18px', letterSpacing: '0.12em', color: '#fff' }}>{title}</p>
           <p style={{ color: '#666', fontSize: '10px', marginLeft: '16px', flexShrink: 0, letterSpacing: '0.1em' }}>
             {p.duration}
           </p>

@@ -96,13 +96,18 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
   }, [lightbox, onPrev, onNext])
   const brief = lang === 'en' ? (p.brief_en || p.brief) : p.brief
   const description = lang === 'en' ? (p.description_en || p.description) : p.description
+  const title = lang === 'en' ? (p.title_en || p.title) : p.title
+  const director = lang === 'en' ? (p.director_en || p.director) : p.director
+  const client = lang === 'en' ? (p.client_en || p.client) : p.client
+  const producer = lang === 'en' ? (p.producer_en || p.producer) : p.producer
+  const aiCreators = lang === 'en' ? (p.aiCreators_en || p.aiCreators) : p.aiCreators
 
   const meta: [string, string][] = [
-    [t.fLabel, p.director],
-    [t.cLabel, p.client],
+    [t.fLabel, director],
+    [t.cLabel, client],
     [t.yLabel, p.date],
     [t.dLabel, p.duration],
-    ...(p.producer ? [[t.pLabel, p.producer] as [string, string]] : []),
+    ...(producer ? [[t.pLabel, producer] as [string, string]] : []),
   ]
 
   return (
@@ -155,7 +160,7 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
             {t.catName[p.category] || p.category} / {p.date}
           </p>
           <h1 className="brand" style={{ fontSize: isPhone ? 'clamp(36px,9vw,60px)' : 'clamp(44px,5vw,80px)', lineHeight: 0.9, marginBottom: isPhone ? '20px' : '32px' }}>
-            {p.title}
+            {title}
           </h1>
 
           <div style={{ display: 'flex', gap: isPhone ? '16px' : '48px', marginBottom: '24px', flexWrap: 'wrap' }}>
@@ -165,10 +170,10 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
                 <p style={{ color: '#aaa', fontSize: '13px' }}>{v}</p>
               </div>
             ))}
-            {p.aiCreators && (
+            {aiCreators && (
               <div>
                 <p style={{ color: '#666', fontSize: '9px', letterSpacing: '0.4em', marginBottom: '6px' }}>{t.aiLabel}</p>
-                {p.aiCreators.map(c => (
+                {aiCreators.map(c => (
                   <p key={c} style={{ color: '#aaa', fontSize: '13px' }}>{c}</p>
                 ))}
               </div>

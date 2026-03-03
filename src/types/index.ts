@@ -6,12 +6,17 @@ export interface StoryboardFrame {
 export interface Project {
   id: number
   title: string
+  title_en?: string
   category: string
   date: string
   director: string
+  director_en?: string
   client: string
+  client_en?: string
   producer?: string
+  producer_en?: string
   aiCreators?: string[]
+  aiCreators_en?: string[]
   description: string
   description_en: string
   brief: string
