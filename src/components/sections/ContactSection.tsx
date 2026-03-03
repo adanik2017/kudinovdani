@@ -61,13 +61,13 @@ export function ContactSection({ isMobile, t }: ContactSectionProps) {
                 onClick={() => (window as any).ym?.(107083695, 'reachGoal', 'click_contact')}
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: '10px',
-                  padding: '14px 28px', background: '#fff', color: '#000',
+                  padding: '14px 28px', background: 'none', color: '#ccc',
                   textDecoration: 'none', fontSize: '10px', letterSpacing: '0.35em',
                   fontFamily: "'Bebas Neue',sans-serif", transition: 'all 0.2s',
-                  width: 'fit-content',
+                  width: 'fit-content', border: '1px solid #444',
                 }}
-                onMouseEnter={e => e.currentTarget.style.background = '#ddd'}
-                onMouseLeave={e => e.currentTarget.style.background = '#fff'}
+                onMouseEnter={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = '#000'; e.currentTarget.style.borderColor = '#fff' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = '#ccc'; e.currentTarget.style.borderColor = '#444' }}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.05 9.656c-.148.658-.543.818-1.1.508l-3.05-2.246-1.47 1.415c-.163.163-.3.3-.614.3l.22-3.1 5.64-5.095c.245-.22-.054-.34-.38-.12L6.93 14.41l-3-.935c-.654-.204-.667-.654.136-.968l11.69-4.508c.544-.197 1.02.132.807.25z" />
@@ -84,8 +84,8 @@ export function ContactSection({ isMobile, t }: ContactSectionProps) {
                   fontFamily: "'Bebas Neue',sans-serif", transition: 'all 0.2s',
                   width: 'fit-content', border: '1px solid #333',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#666' }}
-                onMouseLeave={e => { e.currentTarget.style.color = '#888'; e.currentTarget.style.borderColor = '#333' }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = '#000'; e.currentTarget.style.borderColor = '#fff' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = '#888'; e.currentTarget.style.borderColor = '#333' }}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <rect x="2" y="4" width="20" height="16" rx="2" />
