@@ -87,7 +87,7 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
         background: '#000', zIndex: 50, borderBottom: '1px solid #0d0d0d',
       }}>
         <div className="brand" style={{ fontSize: isMobile ? '14px' : '20px', letterSpacing: '0.15em' }}>
-          {p.title}
+          KUDINOV FILMS
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <LangSwitcher lang={lang} setLang={setLang} />
