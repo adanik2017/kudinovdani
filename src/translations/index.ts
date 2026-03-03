@@ -44,6 +44,7 @@ interface Translations {
   steps: [string, string, string][]
   ctaFilmHeading: string
   ctaFilmSub: string
+  email: string
 }
 
 const ru: Translations = {
@@ -103,6 +104,7 @@ const ru: Translations = {
   telegram: 'НАПИСАТЬ В TELEGRAM',
   ctaFilmHeading: 'ПОНРАВИЛСЯ РОЛИК?',
   ctaFilmSub: 'Обсудим твой проект — напишите в Telegram, ответим в течение часа.',
+  email: 'НАПИСАТЬ НА ПОЧТУ',
   process: 'КАК МЫ РАБОТАЕМ',
   steps: [
     ['01', 'БРИФ', 'Пишете задачу в Telegram — продукт, цель, референсы. Можно голосом. Отвечаем в течение часа.'],
@@ -167,7 +169,8 @@ const en: Translations = {
   ctaDesc: "Write on Telegram — we'll discuss the task, timeline, and format. We reply within an hour.",
   telegram: 'WRITE ON TELEGRAM',
   ctaFilmHeading: 'LIKED THE FILM?',
-  ctaFilmSub: "Let's discuss your project — write on Telegram, we reply within an hour.",
+  ctaFilmSub: "Let's discuss your project — write on Telegram or email, we reply within an hour.",
+  email: 'SEND AN EMAIL',
   process: 'HOW WE WORK',
   steps: [
     ['01', 'BRIEF', 'Send your task on Telegram — product, goal, references. Voice messages work too. We reply within an hour.'],
