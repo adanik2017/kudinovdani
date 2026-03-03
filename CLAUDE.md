@@ -33,9 +33,19 @@
    - Команда: `ffmpeg -i video.mp4 -vf fps=1/N -q:v 2 shot_%02d.jpg` (N = длина/15)
    - Или вручную по таймкодам через `ffmpeg -ss HH:MM:SS -i video.mp4 -frames:v 1 shot_XX.jpg`
    - Конвертировать шоты в WebP 1280px (Pillow)
-3. **Загрузить медиа в Cloudflare R2**: boto3, скрипт `/tmp/upload_r2.py`
-4. **Обновить `src/data/projects.ts`**: добавить новый проект с CDN URL
-5. **Закоммитить и запушить** (только по команде пользователя): `git push` → Vercel деплоит
+3. **Создать превью-клип** (для быстрого hover-просмотра на карточке):
+   - 4 секунды с ~20% позиции видео, 640px, без звука, CRF 30
+   - `ffmpeg -ss START -i video.mp4 -t 4 -vf "scale=640:-2" -c:v libx264 -crf 30 -preset fast -an preview.mp4`
+   - Загрузить в R2 как `ПАПКА/preview.mp4`
+   - Добавить поле `preview:` в `projects.ts`
+4. **Создать обложку** (постер карточки и OG-превью при шэринге):
+   - Формат 21:9, 1280×549px, WebP quality 85
+   - Загрузить в R2 как `ПАПКА/cover.webp`
+   - Поле `image:` в `projects.ts` должно указывать на этот файл
+5. **Загрузить медиа в Cloudflare R2**: boto3, скрипт `/tmp/upload_r2.py`
+6. **Обновить `src/data/projects.ts`**: добавить новый проект с CDN URL (включая `preview` и `image`)
+7. **Добавить проект в `middleware.ts`**: в объект `projects` добавить запись с `id`, `title`, `desc`, `image` — иначе при шэринге ссылки не будет превью в Telegram/соцсетях
+8. **Закоммитить и запушить** (только по команде пользователя): `git push` → Vercel деплоит
 
 ## Стек проекта
 - React + TypeScript + Vite + Tailwind CSS
