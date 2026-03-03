@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { LangSwitcher } from '../LangSwitcher/LangSwitcher'
 import { Lightbox } from '../Lightbox/Lightbox'
 import type { Project, Language, LightboxState } from '../../types'
@@ -9,6 +9,10 @@ interface ProjectDetailProps {
   setLang: (l: Language) => void
   isMobile: boolean
   onClose: () => void
+  onPrev: (() => void) | null
+  onNext: (() => void) | null
+  projIdx: number
+  projTotal: number
   t: {
     catName: Record<string, string>
     close: string
@@ -25,11 +29,23 @@ interface ProjectDetailProps {
   }
 }
 
-export function ProjectDetail({ project, lang, setLang, isMobile, onClose, t }: ProjectDetailProps) {
+export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPrev, onNext, projIdx, projTotal, t }: ProjectDetailProps) {
   const [lightbox, setLightbox] = useState<LightboxState | null>(null)
   const [videoLang, setVideoLang] = useState(0)
   const p = project
   const activeVideo = p.videoVersions ? p.videoVersions[videoLang].src : p.video
+  const touchStartX = useRef<number | null>(null)
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return
+    const dx = e.changedTouches[0].clientX - touchStartX.current
+    touchStartX.current = null
+    if (dx > 60 && onPrev) onPrev()
+    else if (dx < -60 && onNext) onNext()
+  }
 
   // Keyboard navigation
   useEffect(() => {
@@ -62,7 +78,7 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, t }: 
   ]
 
   return (
-    <div style={{ paddingBottom: '96px' }}>
+    <div style={{ paddingBottom: '96px' }} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
       {/* Header */}
       <header style={{
         position: 'fixed', top: 0, left: 0, width: '100%',
@@ -220,6 +236,52 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, t }: 
           ))}
         </div>
       </div>
+
+      {/* Mobile swipe nav */}
+      {isMobile && (
+        <div style={{
+          position: 'fixed', bottom: 0, left: 0, right: 0,
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          padding: '12px 20px', background: 'rgba(0,0,0,0.95)',
+          borderTop: '1px solid #1a1a1a', zIndex: 50,
+        }}>
+          <button
+            onClick={onPrev ?? undefined}
+            disabled={!onPrev}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '8px',
+              background: 'none', border: 'none', cursor: onPrev ? 'pointer' : 'default',
+              color: onPrev ? '#888' : '#2a2a2a', fontSize: '10px', letterSpacing: '0.2em',
+              fontFamily: 'inherit', padding: '8px 0', transition: 'color .2s',
+            }}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+            ПРЕД
+          </button>
+
+          <span style={{ color: '#333', fontSize: '9px', letterSpacing: '0.4em' }}>
+            {String(projIdx + 1).padStart(2, '0')} / {String(projTotal).padStart(2, '0')}
+          </span>
+
+          <button
+            onClick={onNext ?? undefined}
+            disabled={!onNext}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '8px',
+              background: 'none', border: 'none', cursor: onNext ? 'pointer' : 'default',
+              color: onNext ? '#888' : '#2a2a2a', fontSize: '10px', letterSpacing: '0.2em',
+              fontFamily: 'inherit', padding: '8px 0', transition: 'color .2s',
+            }}
+          >
+            СЛЕД
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+      )}
 
       {/* Lightbox */}
       {lightbox && (

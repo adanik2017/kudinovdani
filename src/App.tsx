@@ -104,6 +104,7 @@ export function App() {
   }
 
   const list = projects.filter(p => p.category === cat)
+  const projIdx = proj ? list.findIndex(p => p.id === proj.id) : -1
 
   return (
     <div style={{ minHeight: '100vh', background: '#000', color: '#fff', cursor: 'none' }}>
@@ -124,6 +125,10 @@ export function App() {
               setLang={setLang}
               isMobile={isMobile}
               onClose={closeProject}
+              onPrev={projIdx > 0 ? () => openProject(list[projIdx - 1]) : null}
+              onNext={projIdx < list.length - 1 ? () => openProject(list[projIdx + 1]) : null}
+              projIdx={projIdx}
+              projTotal={list.length}
               t={t}
             />
           ) : (
