@@ -85,18 +85,22 @@ export function Navigation({
           {!isMobile && <LangSwitcher lang={lang} setLang={setLang} style={{ marginLeft: '8px' }} />}
 
           {!isMobile && (
+            <span style={{ width: '1px', height: '16px', background: '#222', marginLeft: '8px', flexShrink: 0 }} />
+          )}
+
+          {!isMobile && (
             <a
-              href="#contact"
+              href="https://t.me/kudinovdani"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => (window as any).ym?.(107083695, 'reachGoal', 'click_contact')}
               style={{
-                marginLeft: '8px', padding: '8px 18px',
-                border: '1px solid #fff', color: '#fff',
-                textDecoration: 'none', fontSize: '9px', letterSpacing: '0.3em',
-                fontFamily: "'Bebas Neue',sans-serif", transition: 'all .2s',
-                whiteSpace: 'nowrap',
+                color: '#888', textDecoration: 'none',
+                fontSize: '10px', letterSpacing: '0.22em',
+                transition: 'color .2s', whiteSpace: 'nowrap',
               }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = '#000' }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#fff' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#fff'}
+              onMouseLeave={e => e.currentTarget.style.color = '#888'}
             >
               {t.discuss}
             </a>
