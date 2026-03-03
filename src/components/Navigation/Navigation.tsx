@@ -83,6 +83,24 @@ export function Navigation({
           ))}
 
           {!isMobile && <LangSwitcher lang={lang} setLang={setLang} style={{ marginLeft: '8px' }} />}
+
+          {!isMobile && (
+            <a
+              href="#contact"
+              onClick={() => (window as any).ym?.(107083695, 'reachGoal', 'click_contact')}
+              style={{
+                marginLeft: '8px', padding: '8px 18px',
+                border: '1px solid #fff', color: '#fff',
+                textDecoration: 'none', fontSize: '9px', letterSpacing: '0.3em',
+                fontFamily: "'Bebas Neue',sans-serif", transition: 'all .2s',
+                whiteSpace: 'nowrap',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = '#000' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#fff' }}
+            >
+              {t.discuss}
+            </a>
+          )}
         </div>
 
         {/* Hamburger — mobile only */}
