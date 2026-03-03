@@ -115,17 +115,22 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
         paddingTop: '80px',
         padding: isMobile ? '60px 20px 0' : '80px 48px 0',
         maxWidth: '1600px', margin: '0 auto',
+        display: 'flex', flexDirection: 'column',
       }}>
         {/* Project header */}
-        <div style={{ padding: isMobile ? '28px 0' : '60px 0', borderBottom: '1px solid #0d0d0d' }}>
-          <p style={{ color: '#666', fontSize: '9px', letterSpacing: '0.45em', marginBottom: '16px' }}>
+        <div style={{
+          order: isMobile ? 2 : 1,
+          padding: isMobile ? '20px 0' : '60px 0',
+          borderBottom: isMobile ? 'none' : '1px solid #0d0d0d',
+        }}>
+          <p style={{ color: '#666', fontSize: '9px', letterSpacing: '0.45em', marginBottom: '12px' }}>
             {t.catName[p.category] || p.category} / {p.date}
           </p>
-          <h1 className="brand" style={{ fontSize: 'clamp(50px,8vw,110px)', lineHeight: 0.9, marginBottom: '40px' }}>
+          <h1 className="brand" style={{ fontSize: isMobile ? 'clamp(36px,9vw,60px)' : 'clamp(50px,8vw,110px)', lineHeight: 0.9, marginBottom: isMobile ? '20px' : '40px' }}>
             {p.title}
           </h1>
 
-          <div style={{ display: 'flex', gap: isMobile ? '24px' : '48px', marginBottom: '32px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: isMobile ? '16px' : '48px', marginBottom: '24px', flexWrap: 'wrap' }}>
             {meta.map(([k, v]) => (
               <div key={k}>
                 <p style={{ color: '#666', fontSize: '9px', letterSpacing: '0.4em', marginBottom: '6px' }}>{k}</p>
@@ -159,7 +164,7 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
         </div>
 
         {/* Video */}
-        <div style={{ margin: '48px 0' }}>
+        <div style={{ order: isMobile ? 1 : 2, margin: isMobile ? '0 -20px 0' : '48px 0' }}>
           {p.videoVersions && (
             <div style={{ display: 'flex', gap: '6px', marginBottom: '10px' }}>
               {p.videoVersions.map((v, i) => (
@@ -194,7 +199,7 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
         </div>
 
         {/* Description */}
-        <div style={{ marginBottom: '56px', maxWidth: '600px' }}>
+        <div style={{ order: 3, marginBottom: '56px', maxWidth: '600px', paddingTop: isMobile ? '20px' : '0' }}>
           <p style={{ color: '#999', fontSize: '13px', lineHeight: '1.9', marginBottom: '16px' }}>{description}</p>
           <p style={{ color: '#666', fontSize: '13px', lineHeight: '1.9' }}>
             {p.category === 'ИИ-ВИДЕО' ? t.aiNote : t.hybridNote}
@@ -202,7 +207,7 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
         </div>
 
         {/* Color palette */}
-        <div style={{ marginBottom: '48px' }}>
+        <div style={{ order: 4, marginBottom: '48px' }}>
           <p style={{ color: '#333', fontSize: '9px', letterSpacing: '0.4em', marginBottom: '16px' }}>{t.palette}</p>
           <div style={{ display: 'flex', gap: '4px', height: '32px' }}>
             {(p.palette || []).map((c, i) => (
@@ -212,10 +217,11 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
         </div>
 
         {/* Storyboard */}
-        <div style={{ borderBottom: '1px solid #0d0d0d', marginBottom: '20px', paddingBottom: '12px' }}>
+        <div style={{ order: 5, borderBottom: '1px solid #0d0d0d', marginBottom: '20px', paddingBottom: '12px' }}>
           <p style={{ color: '#444', fontSize: '11px', letterSpacing: '0.4em' }}>{t.storyboard}</p>
         </div>
         <div style={{
+          order: 6,
           display: 'grid',
           gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(4,1fr)',
           gap: '6px', paddingBottom: '64px',
