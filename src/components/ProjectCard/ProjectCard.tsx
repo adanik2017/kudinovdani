@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import type { Project, Language } from '../../types'
 
 interface ProjectCardProps {
@@ -20,11 +21,37 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const p = project
   const description = lang === 'en' ? (p.description_en || p.description) : p.description
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = cardRef.current
+    if (!el) return
+    const delay = (cardIdx % 2) * 100
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            el.style.opacity = '1'
+            el.style.transform = 'none'
+          }, delay)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.06 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [cardIdx])
 
   return (
     <div
-      className="card-in"
-      style={{ cursor: 'pointer', animationDelay: cardIdx * 0.1 + 's' }}
+      ref={cardRef}
+      style={{
+        cursor: 'pointer',
+        opacity: 0,
+        transform: 'translateY(24px)',
+        transition: 'opacity 0.65s ease, transform 0.65s ease',
+      }}
       onClick={onOpen}
     >
       {/* Thumbnail */}

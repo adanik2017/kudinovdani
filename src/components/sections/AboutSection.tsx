@@ -18,6 +18,8 @@ interface AboutSectionProps {
   t: AboutTranslations
 }
 
+import { Reveal } from '../Reveal'
+
 export function AboutSection({ isMobile, t }: AboutSectionProps) {
   return (
     <section id="about" style={{ borderTop: '1px solid #1a1a1a', padding: '0' }}>
@@ -25,10 +27,12 @@ export function AboutSection({ isMobile, t }: AboutSectionProps) {
       <div style={{ padding: isMobile ? '56px 20px 0' : '96px 48px 0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           {/* Label row */}
+          <Reveal>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '56px' }}>
             <span style={{ display: 'block', width: '32px', height: '1px', background: '#333' }} />
             <p style={{ color: '#666', fontSize: '9px', letterSpacing: '0.55em', margin: 0 }}>{t.about}</p>
           </div>
+          </Reveal>
 
           {/* Main hero grid */}
           <div style={{
@@ -39,7 +43,7 @@ export function AboutSection({ isMobile, t }: AboutSectionProps) {
             marginBottom: isMobile ? '56px' : '80px',
           }}>
             {/* LEFT — avatar + name */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+            <Reveal delay={0} style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
                 {/* Avatar with glow ring */}
                 <div style={{ position: 'relative', flexShrink: 0 }}>
@@ -93,10 +97,10 @@ export function AboutSection({ isMobile, t }: AboutSectionProps) {
                   </span>
                 ))}
               </div>
-            </div>
+            </Reveal>
 
             {/* RIGHT — bio */}
-            <div>
+            <Reveal delay={150}>
               <p style={{ color: '#aaa', fontSize: isMobile ? '14px' : '15px', lineHeight: '1.9', marginBottom: '20px' }}>
                 {t.bio1a}
                 <strong style={{ color: '#fff', fontWeight: 500 }}>{t.bio1b}</strong>
@@ -127,7 +131,7 @@ export function AboutSection({ isMobile, t }: AboutSectionProps) {
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>
@@ -140,8 +144,9 @@ export function AboutSection({ isMobile, t }: AboutSectionProps) {
           gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(4,1fr)',
         }}>
           {t.stats.map(([n, l, sub], i) => (
-            <div
+            <Reveal
               key={i}
+              delay={i * 100}
               style={{
                 padding: isMobile ? '28px 20px' : '36px 32px',
                 borderRight: !isMobile && i < 3 ? '1px solid #141414' : 'none',
@@ -153,7 +158,7 @@ export function AboutSection({ isMobile, t }: AboutSectionProps) {
               </p>
               <p style={{ color: '#bbb', fontSize: '10px', letterSpacing: '0.25em', marginBottom: '6px' }}>{l}</p>
               <p style={{ color: '#444', fontSize: '10px', lineHeight: '1.5' }}>{sub}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

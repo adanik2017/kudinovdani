@@ -12,6 +12,8 @@ interface ContactSectionProps {
   t: ContactTranslations
 }
 
+import { Reveal } from '../Reveal'
+
 export function ContactSection({ isMobile, t }: ContactSectionProps) {
   return (
     <section
@@ -23,10 +25,12 @@ export function ContactSection({ isMobile, t }: ContactSectionProps) {
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
+        <Reveal>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '56px' }}>
           <span style={{ display: 'block', width: '32px', height: '1px', background: '#333' }} />
           <p style={{ color: '#666', fontSize: '9px', letterSpacing: '0.55em', margin: 0 }}>{t.startProject}</p>
         </div>
+        </Reveal>
 
         <div style={{
           display: 'grid',
@@ -35,7 +39,7 @@ export function ContactSection({ isMobile, t }: ContactSectionProps) {
           alignItems: 'start',
         }}>
           {/* LEFT — CTA */}
-          <div>
+          <Reveal delay={0}>
             <h2
               className="brand"
               style={{
@@ -70,10 +74,10 @@ export function ContactSection({ isMobile, t }: ContactSectionProps) {
                 {t.telegram}
               </a>
             </div>
-          </div>
+          </Reveal>
 
           {/* RIGHT — process */}
-          <div>
+          <Reveal delay={150}>
             <p style={{ color: '#444', fontSize: '9px', letterSpacing: '0.45em', marginBottom: '28px' }}>{t.process}</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0px' }}>
               {t.steps.map(([num, title, desc], i, arr) => (
@@ -106,7 +110,7 @@ export function ContactSection({ isMobile, t }: ContactSectionProps) {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -11,11 +11,14 @@ interface ServicesSectionProps {
   t: ServicesTranslations
 }
 
+import { Reveal } from '../Reveal'
+
 export function ServicesSection({ isMobile, t }: ServicesSectionProps) {
   return (
     <div style={{ padding: isMobile ? '48px 20px 56px' : '80px 48px 96px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
+        <Reveal>
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           marginBottom: '48px', flexWrap: 'wrap', gap: '12px',
@@ -26,16 +29,17 @@ export function ServicesSection({ isMobile, t }: ServicesSectionProps) {
           </div>
           <p style={{ color: '#333', fontSize: '9px', letterSpacing: '0.25em', margin: 0 }}>{t.servicesCount}</p>
         </div>
+        </Reveal>
 
         {/* Services grid */}
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap: '1px', background: '#161616' }}>
-          {t.services.map(([num, title, desc, badge]) => (
+          {t.services.map(([num, title, desc, badge], si) => (
+            <Reveal key={num} delay={si * 100}>
             <div
-              key={num}
               style={{
                 background: '#000', padding: '32px 28px',
                 position: 'relative', transition: 'background 0.25s',
-                cursor: 'default',
+                cursor: 'default', height: '100%', boxSizing: 'border-box',
                 borderBottom: isMobile ? '1px solid #161616' : 'none',
               }}
               onMouseEnter={e => e.currentTarget.style.background = '#0a0a0a'}
@@ -58,10 +62,12 @@ export function ServicesSection({ isMobile, t }: ServicesSectionProps) {
               </p>
               <p style={{ color: '#666', fontSize: '12px', lineHeight: '1.85', margin: 0 }}>{desc}</p>
             </div>
+            </Reveal>
           ))}
         </div>
 
         {/* CTA */}
+        <Reveal delay={100}>
         <div style={{ marginTop: '48px', display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
           <a
             href="https://t.me/kudinovdani"
@@ -80,6 +86,7 @@ export function ServicesSection({ isMobile, t }: ServicesSectionProps) {
           </a>
           <p style={{ color: '#444', fontSize: '11px', margin: 0 }}>{t.ctaNote}</p>
         </div>
+        </Reveal>
       </div>
     </div>
   )
