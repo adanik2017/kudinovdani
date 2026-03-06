@@ -172,18 +172,18 @@ export function ProjectCard({
         <p style={{ color: '#777', fontSize: '11px', letterSpacing: '0.08em', fontWeight: 300, marginBottom: '10px' }}>
           {description}
         </p>
-        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px', minHeight: '28px' }}>
+          <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', flex: 1 }}>
             {(p.tools || []).map(tool => (
               <span
                 key={tool}
-                style={{ fontSize: '9px', letterSpacing: '0.2em', color: '#888', border: '1px solid #444', padding: '3px 8px' }}
+                style={{ fontSize: '9px', letterSpacing: '0.2em', color: '#888', border: '1px solid #333', padding: '3px 8px', whiteSpace: 'nowrap' }}
               >
                 {tool}
               </span>
             ))}
           </div>
-          <div style={{ display: 'flex', gap: '6px', flexShrink: 0 }}>
+          <div style={{ display: 'flex', gap: '6px', flexShrink: 0, alignItems: 'center' }}>
             <button
               onClick={e => {
                 e.stopPropagation()
@@ -196,7 +196,7 @@ export function ProjectCard({
                 background: 'none', border: '1px solid ' + (liked ? '#e54' : '#444'),
                 color: liked ? '#e54' : '#888',
                 cursor: 'pointer', fontSize: '9px', letterSpacing: '0.15em',
-                fontFamily: 'inherit', padding: '4px 10px', flexShrink: 0,
+                fontFamily: 'inherit', padding: '4px 10px',
                 transition: 'all .2s',
               }}
               onMouseEnter={e => { if (!liked) { e.currentTarget.style.color = '#e54'; e.currentTarget.style.borderColor = '#e54' }}}
@@ -212,8 +212,8 @@ export function ProjectCard({
               style={{
                 background: 'none', border: '1px solid #444', color: '#aaa',
                 cursor: 'pointer', fontSize: '9px', letterSpacing: '0.2em',
-                fontFamily: 'inherit', padding: '4px 12px', flexShrink: 0,
-                transition: 'all .2s',
+                fontFamily: 'inherit', padding: '4px 12px',
+                transition: 'all .2s', whiteSpace: 'nowrap',
               }}
               onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#fff' }}
               onMouseLeave={e => { e.currentTarget.style.color = '#aaa'; e.currentTarget.style.borderColor = '#444' }}
