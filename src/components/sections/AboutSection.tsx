@@ -26,23 +26,20 @@ function ClientCycler({ clients }: { clients: string[] }) {
   const items = [...clients, ...clients]
 
   return (
-    <div style={{ overflow: 'hidden', position: 'relative' }}>
+    <div style={{ overflow: 'hidden', width: '100%' }}>
       <div
         style={{
           display: 'flex',
-          gap: '40px',
+          alignItems: 'center',
+          gap: '0',
           width: 'max-content',
-          animation: 'clientScroll 12s linear infinite',
+          animation: 'clientScroll 14s linear infinite',
         }}
       >
         {items.map((c, i) => (
-          <span
-            key={i}
-            className="brand"
-            style={{ color: '#555', fontSize: '12px', letterSpacing: '0.25em', whiteSpace: 'nowrap', flexShrink: 0 }}
-          >
-            {c}
-            <span style={{ color: '#222', marginLeft: '40px' }}>·</span>
+          <span key={i} style={{ display: 'flex', alignItems: 'center', whiteSpace: 'nowrap' }}>
+            <span className="brand" style={{ color: '#555', fontSize: '11px', letterSpacing: '0.2em' }}>{c}</span>
+            <span style={{ color: '#222', margin: '0 20px', fontSize: '10px' }}>·</span>
           </span>
         ))}
       </div>
@@ -135,8 +132,8 @@ export function AboutSection({ isMobile, t }: AboutSectionProps) {
               </div>
 
               {/* Clients */}
-              <div>
-                <p style={{ color: '#333', fontSize: '9px', letterSpacing: '0.4em', marginBottom: '10px' }}>КЛИЕНТЫ</p>
+              <div style={{ overflow: 'hidden' }}>
+                <p style={{ color: '#333', fontSize: '9px', letterSpacing: '0.4em', marginBottom: '8px' }}>КЛИЕНТЫ</p>
                 <ClientCycler clients={t.clients} />
               </div>
             </Reveal>
