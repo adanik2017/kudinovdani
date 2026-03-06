@@ -30,8 +30,6 @@ export function ProjectCard({
   const views = currentViews >= 1000
     ? `${(currentViews / 1000).toFixed(1).replace('.0', '')}K`
     : currentViews
-  const isHot = [3, 6, 1].includes(p.id)
-  const hotLabel = lang === 'en' ? 'POPULAR' : 'ПОПУЛЯРНОЕ'
   const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -91,17 +89,6 @@ export function ProjectCard({
           onCursorFill(false)
         }}
       >
-        {isHot && (
-          <div style={{
-            position: 'absolute', top: '12px', left: '12px', zIndex: 2,
-            background: 'rgba(0,0,0,0.7)', border: '1px solid #ff4d00',
-            color: '#ff6a2a', fontSize: '8px', letterSpacing: '0.35em',
-            padding: '4px 10px', fontFamily: "'Bebas Neue',sans-serif",
-            backdropFilter: 'blur(4px)',
-          }}>
-            {hotLabel}
-          </div>
-        )}
         <img
           src={p.image}
           alt={p.title}
