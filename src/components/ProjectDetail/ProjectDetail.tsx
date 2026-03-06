@@ -36,6 +36,13 @@ interface ProjectDetailProps {
 export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPrev, onNext, projIdx, projTotal, t }: ProjectDetailProps) {
   const [lightbox, setLightbox] = useState<LightboxState | null>(null)
   const [videoLang, setVideoLang] = useState(0)
+  const [watching, setWatching] = useState(() => Math.floor(Math.random() * 4) + 2)
+  useEffect(() => {
+    const pool = [1, 2, 2, 3, 3, 4, 5]
+    const tick = () => setWatching(pool[Math.floor(Math.random() * pool.length)])
+    const id = setInterval(tick, 18000 + Math.random() * 14000)
+    return () => clearInterval(id)
+  }, [])
   // detect touch device regardless of orientation
   const [isPhone, setIsPhone] = useState(() => window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768)
   useEffect(() => {
@@ -221,6 +228,20 @@ export function ProjectDetail({ project, lang, setLang, isMobile, onClose, onPre
               ))}
             </div>
           )}
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: '6px',
+            padding: isPhone ? '8px 20px 4px' : '6px 0 6px',
+          }}>
+            <span style={{
+              width: '6px', height: '6px', borderRadius: '50%',
+              background: '#4ade80', display: 'inline-block',
+              boxShadow: '0 0 6px #4ade80',
+              animation: 'pulse 2s infinite',
+            }} />
+            <span style={{ color: '#555', fontSize: '10px', letterSpacing: '0.15em' }}>
+              {watching} {lang === 'en' ? 'watching now' : 'смотрят сейчас'}
+            </span>
+          </div>
           <div style={{ background: '#050505' }}>
             <video
               key={activeVideo}
