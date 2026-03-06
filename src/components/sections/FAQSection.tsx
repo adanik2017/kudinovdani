@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Reveal } from '../Reveal'
 
 interface FAQSectionProps {
   isMobile: boolean
@@ -10,67 +9,74 @@ interface FAQSectionProps {
 }
 
 export function FAQSection({ isMobile, t }: FAQSectionProps) {
+  const [sectionOpen, setSectionOpen] = useState(false)
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section id="faq" style={{ borderTop: '1px solid #1a1a1a', padding: isMobile ? '56px 20px 64px' : '96px 48px 112px' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <Reveal>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '56px' }}>
-            <span style={{ display: 'block', width: '32px', height: '1px', background: '#333' }} />
-            <p style={{ color: '#666', fontSize: '9px', letterSpacing: '0.55em', margin: 0 }}>{t.faq}</p>
-          </div>
-        </Reveal>
+    <section id="faq" style={{ borderTop: '1px solid #111', background: '#020202' }}>
+      <button
+        onClick={() => setSectionOpen(o => !o)}
+        style={{
+          width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          padding: isMobile ? '18px 20px' : '22px 48px',
+          background: 'none', border: 'none', cursor: 'pointer',
+        }}
+      >
+        <span style={{ color: '#444', fontSize: '9px', letterSpacing: '0.4em', fontFamily: 'inherit' }}>
+          {t.faq}
+        </span>
+        <span style={{
+          color: '#333', fontSize: '16px',
+          transform: sectionOpen ? 'rotate(45deg)' : 'none',
+          transition: 'transform 0.3s ease',
+          display: 'inline-block',
+        }}>+</span>
+      </button>
 
-        <div style={{ maxWidth: '760px' }}>
+      <div style={{
+        overflow: 'hidden',
+        maxHeight: sectionOpen ? '2000px' : '0',
+        transition: 'max-height 0.5s cubic-bezier(0.4,0,0.2,1)',
+      }}>
+        <div style={{ padding: isMobile ? '8px 20px 32px' : '8px 48px 40px', maxWidth: '860px' }}>
           {t.faqItems.map(([q, a], i) => (
-            <Reveal key={i} delay={i * 50}>
-              <div style={{ borderBottom: '1px solid #141414' }}>
-                <button
-                  onClick={() => setOpen(open === i ? null : i)}
-                  style={{
-                    width: '100%', display: 'flex', justifyContent: 'space-between',
-                    alignItems: 'center', gap: '16px',
-                    padding: isMobile ? '18px 0' : '22px 0',
-                    background: 'none', border: 'none', cursor: 'pointer',
-                    textAlign: 'left',
-                  }}
-                >
-                  <span
-                    className="brand"
-                    style={{
-                      fontSize: isMobile ? '14px' : '16px',
-                      letterSpacing: '0.06em',
-                      color: open === i ? '#fff' : '#aaa',
-                      transition: 'color 0.2s',
-                    }}
-                  >
-                    {q}
-                  </span>
-                  <span style={{
-                    flexShrink: 0, width: '20px', height: '20px',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: '#444', fontSize: '16px',
-                    transform: open === i ? 'rotate(45deg)' : 'none',
-                    transition: 'transform 0.3s ease',
-                  }}>
-                    +
-                  </span>
-                </button>
-                <div style={{
-                  overflow: 'hidden',
-                  maxHeight: open === i ? '300px' : '0',
-                  transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)',
+            <div key={i} style={{ borderBottom: '1px solid #141414' }}>
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                style={{
+                  width: '100%', display: 'flex', justifyContent: 'space-between',
+                  alignItems: 'center', gap: '16px',
+                  padding: isMobile ? '16px 0' : '20px 0',
+                  background: 'none', border: 'none', cursor: 'pointer',
+                  textAlign: 'left',
+                }}
+              >
+                <span style={{
+                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontSize: isMobile ? '14px' : '15px',
+                  letterSpacing: '0.06em',
+                  color: open === i ? '#fff' : '#888',
+                  transition: 'color 0.2s',
                 }}>
-                  <p style={{
-                    color: '#666', fontSize: '13px', lineHeight: '1.85',
-                    paddingBottom: '20px', margin: 0,
-                  }}>
-                    {a}
-                  </p>
-                </div>
+                  {q}
+                </span>
+                <span style={{
+                  flexShrink: 0, color: '#333', fontSize: '16px',
+                  transform: open === i ? 'rotate(45deg)' : 'none',
+                  transition: 'transform 0.3s ease',
+                  display: 'inline-block',
+                }}>+</span>
+              </button>
+              <div style={{
+                overflow: 'hidden',
+                maxHeight: open === i ? '300px' : '0',
+                transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)',
+              }}>
+                <p style={{ color: '#555', fontSize: '12px', lineHeight: '1.85', paddingBottom: '18px', margin: 0 }}>
+                  {a}
+                </p>
               </div>
-            </Reveal>
+            </div>
           ))}
         </div>
       </div>
