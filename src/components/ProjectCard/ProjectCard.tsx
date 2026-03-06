@@ -22,6 +22,7 @@ export function ProjectCard({
   const p = project
   const description = lang === 'en' ? (p.description_en || p.description) : p.description
   const title = lang === 'en' ? (p.title_en || p.title) : p.title
+  const views = p.views >= 1000 ? `${(p.views / 1000).toFixed(1).replace('.0', '')}K` : p.views
   const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -141,9 +142,16 @@ export function ProjectCard({
       <div style={{ paddingTop: '14px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '6px' }}>
           <p className="brand" style={{ fontSize: '18px', letterSpacing: '0.12em', color: '#fff' }}>{title}</p>
-          <p style={{ color: '#666', fontSize: '10px', marginLeft: '16px', flexShrink: 0, letterSpacing: '0.1em' }}>
-            {p.duration}
-          </p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0, marginLeft: '16px' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '5px', color: '#555', fontSize: '10px', letterSpacing: '0.08em' }}>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              {views}
+            </span>
+            <span style={{ color: '#666', fontSize: '10px', letterSpacing: '0.1em' }}>{p.duration}</span>
+          </div>
         </div>
         <p style={{ color: '#777', fontSize: '11px', letterSpacing: '0.08em', fontWeight: 300, marginBottom: '10px' }}>
           {description}

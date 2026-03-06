@@ -21,6 +21,7 @@ export interface Project {
   description_en: string
   brief: string
   brief_en: string
+  views: number
   duration: string
   tools: string[]
   image: string
