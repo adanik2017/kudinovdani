@@ -22,7 +22,14 @@ export function ProjectCard({
   const p = project
   const description = lang === 'en' ? (p.description_en || p.description) : p.description
   const title = lang === 'en' ? (p.title_en || p.title) : p.title
-  const views = p.views >= 1000 ? `${(p.views / 1000).toFixed(1).replace('.0', '')}K` : p.views
+
+  const LAUNCH = new Date('2026-03-03').getTime()
+  const days = Math.floor((Date.now() - LAUNCH) / 86400000)
+  const dailyGrowth = Math.floor(p.views * 0.009) + (p.id % 5) + 2
+  const currentViews = p.views + dailyGrowth * days
+  const views = currentViews >= 1000
+    ? `${(currentViews / 1000).toFixed(1).replace('.0', '')}K`
+    : currentViews
   const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
