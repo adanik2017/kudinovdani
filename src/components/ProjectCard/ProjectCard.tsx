@@ -30,7 +30,8 @@ export function ProjectCard({
   const views = currentViews >= 1000
     ? `${(currentViews / 1000).toFixed(1).replace('.0', '')}K`
     : currentViews
-  const isHot = p.views >= 4700
+  const isHot = [1, 2, 3, 4, 5, 6].includes(p.id)
+  const hotLabel = lang === 'en' ? 'POPULAR' : 'ПОПУЛЯРНОЕ'
   const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -98,7 +99,7 @@ export function ProjectCard({
             padding: '4px 10px', fontFamily: "'Bebas Neue',sans-serif",
             backdropFilter: 'blur(4px)',
           }}>
-            HOT
+            {hotLabel}
           </div>
         )}
         <img
