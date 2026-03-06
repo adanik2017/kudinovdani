@@ -11,12 +11,15 @@ interface ProjectsSectionProps {
   onOpenProject: (p: Project) => void
   onShareProject: (e: React.MouseEvent, id: number) => void
   onCursorFill: (fill: boolean) => void
+  toolFilter: string | null
+  onToolFilter: (tool: string) => void
 }
 
 export function ProjectsSection({
   projects, lang, isMobile, copied,
   shareLabel, copiedLabel,
   onOpenProject, onShareProject, onCursorFill,
+  toolFilter, onToolFilter,
 }: ProjectsSectionProps) {
   const rows: React.ReactNode[] = []
   let lastYear: string | null = null
@@ -63,6 +66,8 @@ export function ProjectsSection({
         onOpen={() => onOpenProject(p)}
         onShare={e => onShareProject(e, p.id)}
         onCursorFill={onCursorFill}
+        toolFilter={toolFilter}
+        onToolFilter={onToolFilter}
       />
     )
   })

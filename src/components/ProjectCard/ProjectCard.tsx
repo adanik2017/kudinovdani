@@ -12,21 +12,34 @@ interface ProjectCardProps {
   onOpen: () => void
   onShare: (e: React.MouseEvent) => void
   onCursorFill: (fill: boolean) => void
+  toolFilter: string | null
+  onToolFilter: (tool: string) => void
 }
 
 export function ProjectCard({
   project, lang, isMobile, cardIdx,
   copied, shareLabel, copiedLabel,
   onOpen, onShare, onCursorFill,
+  toolFilter, onToolFilter,
 }: ProjectCardProps) {
   const p = project
   const description = lang === 'en' ? (p.description_en || p.description) : p.description
   const title = lang === 'en' ? (p.title_en || p.title) : p.title
 
   const LAUNCH = new Date('2026-03-03').getTime()
-  const days = Math.floor((Date.now() - LAUNCH) / 86400000)
-  const dailyGrowth = Math.floor(p.views * 0.009) + (p.id % 5) + 2
-  const currentViews = p.views + dailyGrowth * days
+  const PROJECT_START = new Date('2026-03-06').getTime()
+  const isNew = p.views < 2000
+  const startTime = isNew ? PROJECT_START : LAUNCH
+  const days = Math.max(0, Math.floor((Date.now() - startTime) / 86400000))
+  const dailyGrowth = isNew
+    ? Math.floor(p.views * 0.15) + 1
+    : Math.floor(p.views * 0.009) + (p.id % 5) + 2
+  const slowDays = isNew ? Math.min(days, 3) : 0
+  const fastDays = isNew ? Math.max(0, days - 3) : days
+  const slowGrowth = Math.floor(dailyGrowth * 0.3)
+  const currentViews = isNew
+    ? p.views + slowGrowth * slowDays + dailyGrowth * fastDays
+    : p.views + dailyGrowth * days
   const views = currentViews >= 1000
     ? `${(currentViews / 1000).toFixed(1).replace('.0', '')}K`
     : currentViews
@@ -175,12 +188,23 @@ export function ProjectCard({
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px', minHeight: '28px' }}>
           <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', maxWidth: '50%' }}>
             {(p.tools || []).map(tool => (
-              <span
+              <button
                 key={tool}
-                style={{ fontSize: '9px', letterSpacing: '0.2em', color: '#888', border: '1px solid #333', padding: '3px 8px', whiteSpace: 'nowrap' }}
+                onClick={e => { e.stopPropagation(); onToolFilter(tool) }}
+                style={{
+                  fontSize: '9px', letterSpacing: '0.2em',
+                  color: toolFilter === tool ? '#000' : '#888',
+                  background: toolFilter === tool ? '#fff' : 'none',
+                  border: '1px solid ' + (toolFilter === tool ? '#fff' : '#333'),
+                  padding: '3px 8px', whiteSpace: 'nowrap',
+                  cursor: 'pointer', fontFamily: 'inherit',
+                  transition: 'all .2s',
+                }}
+                onMouseEnter={e => { if (toolFilter !== tool) { e.currentTarget.style.borderColor = '#888'; e.currentTarget.style.color = '#fff' }}}
+                onMouseLeave={e => { if (toolFilter !== tool) { e.currentTarget.style.borderColor = '#333'; e.currentTarget.style.color = '#888' }}}
               >
                 {tool}
-              </span>
+              </button>
             ))}
           </div>
           <div style={{ display: 'flex', gap: '6px', flexShrink: 0, alignItems: 'center' }}>

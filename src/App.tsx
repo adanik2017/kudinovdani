@@ -27,6 +27,7 @@ export function App() {
   })
   const [pageVis, setPageVis] = useState(true)
   const [copied, setCopied] = useState<number | null>(null)
+  const [toolFilter, setToolFilter] = useState<string | null>(null)
   const [lang, setLang] = useState<Language>('ru')
   const [menuOpen, setMenuOpen] = useState(false)
   const [cur, setCur] = useState<CursorState>({ x: -100, y: -100, big: false, fill: false })
@@ -109,7 +110,7 @@ export function App() {
     })
   }
 
-  const list = projects.filter(p => p.category === cat)
+  const list = projects.filter(p => p.category === cat && (!toolFilter || (p.tools || []).includes(toolFilter)))
   const projIdx = proj ? list.findIndex(p => p.id === proj.id) : -1
 
   return (
@@ -162,6 +163,11 @@ export function App() {
                 onOpenProject={openProject}
                 onShareProject={shareProject}
                 onCursorFill={fill => setCur(c => ({ ...c, fill }))}
+                toolFilter={toolFilter}
+                onToolFilter={tool => {
+                  setToolFilter(t => t === tool ? null : tool)
+                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+                }}
               />
 
               <AboutSection isMobile={isMobile} t={t} />
