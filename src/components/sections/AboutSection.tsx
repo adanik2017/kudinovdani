@@ -2,6 +2,7 @@ interface AboutTranslations {
   about: string
   bioRole: string
   badges: string[]
+  clients: string[]
   bio1a: string
   bio1b: string
   bio1c: string
@@ -98,6 +99,21 @@ export function AboutSection({ isMobile, t }: AboutSectionProps) {
                 ))}
               </div>
 
+              {/* Clients */}
+              <div>
+                <p style={{ color: '#333', fontSize: '9px', letterSpacing: '0.4em', marginBottom: '10px' }}>КЛИЕНТЫ</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                  {t.clients.map(c => (
+                    <span
+                      key={c}
+                      className="brand"
+                      style={{ color: '#555', fontSize: '11px', letterSpacing: '0.2em', padding: '4px 0', marginRight: '8px' }}
+                    >
+                      {c}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </Reveal>
 
             {/* RIGHT — bio */}
