@@ -32,6 +32,7 @@ interface Translations {
   clientQuote: string
   clientName: string
   clientRole: string
+  testimonials: [string, string][]
   stats: [string, string, string][]
   servicesLabel: string
   servicesCount: string
@@ -72,14 +73,21 @@ const ru: Translations = {
   bioRole: 'РЕЖИССЁР · МОСКВА',
   badges: ['ФИЛЬМЫ', 'РЕКЛАМА', 'СЕРИАЛЫ', 'ТИЗЕРЫ', 'ИИ'],
   clients: ['COCA-COLA', 'LIT ENERGY', 'JACOBS MONARCH', 'ECLIPSE', 'KVINS', 'YANDEX'],
-  bio1a: 'Создаю ИИ-ролики и рекламные видео — ',
-  bio1b: 'для брендов и агентств',
-  bio1c: ' по всему миру: от небольших проектов до крупных рекламных кампаний. Работаю из Москвы, сотрудничаю с клиентами из Европы и Азии.',
-  bio2: 'С августа 2025 года полностью перешёл на ИИ-производство. ИИ-видео для бренда — от идеи до финального ролика, без съёмочной группы. Нейросети как инструмент кинематографического мышления, а не замена ему.',
-  quote: '«Меня интересует не то, что могут нейросети — а то, чего без них не существовало бы вообще.»',
-  clientQuote: '«Даниил сразу понял задачу и предложил нестандартное визуальное решение. Работали быстро, без лишних правок — результат закрыл все наши ожидания.»',
-  clientName: 'ИРИНА',
-  clientRole: 'ОТДЕЛ МАРКЕТИНГА · ЯНДЕКС',
+  bio1a: 'ИИ-ролики и рекламная видеопродукция — ',
+  bio1b: 'от брифа до финального файла за 5–7 дней',
+  bio1c: '. Без съёмочной группы и раздутого бюджета. Работаю с брендами и агентствами по всему миру — из Москвы, для Европы и Азии.',
+  bio2: 'Полное AI-production с августа 2025: сценарий, генерация, монтаж, цвет, звук — под ключ. Скорость студии, бюджет фрилансера, качество кинопродакшна.',
+  quote: '«Не просто видео — кинематографическое мышление, реализованное через нейросети.»',
+  clientQuote: '',
+  clientName: '',
+  clientRole: '',
+  testimonials: [
+    ['ИРИНА', '«Сразу понял задачу. Финальный ролик получился лучше, чем мы ожидали — и точно в срок.»'],
+    ['МИХАИЛ', '«Работали удалённо, коммуникация чёткая. Ролик закрыл нашу задачу с первого раза.»'],
+    ['АННА', '«Очень быстро, очень качественно. Предложил решение, о котором мы сами не додумались.»'],
+    ['ДМИТРИЙ', '«Бюджет в три раза меньше обычного продакшна — результат на уровень выше.»'],
+    ['КАРИНА', '«Работаем уже второй раз. Без лишних правок, всегда в дедлайн.»'],
+  ],
   stats: [
     ['5+', 'БРЕНДОВ', 'Яндекс, Lit Energy, Coca-Cola и др.'],
     ['2024', 'KUDINOV FILMS', 'Год основания студии'],
@@ -139,14 +147,21 @@ const en: Translations = {
   bioRole: 'DIRECTOR · MOSCOW',
   badges: ['FILMS', 'ADS', 'SERIES', 'TEASERS', 'AI'],
   clients: ['COCA-COLA', 'LIT ENERGY', 'JACOBS MONARCH', 'ECLIPSE', 'KVINS', 'YANDEX'],
-  bio1a: 'I create AI video production and commercial films — ',
-  bio1b: 'for brands and agencies',
-  bio1c: ' worldwide: from independent projects to large-scale ad campaigns. Based in Moscow, working with clients across Europe and Asia.',
-  bio2: 'Since August 2025 I have fully transitioned to AI production. AI video for brands — from concept to final film, no film crew required. Neural networks as a tool for cinematic thinking, not a replacement for it.',
-  quote: '"I\'m not interested in what neural networks can do — but in what simply wouldn\'t exist without them."',
-  clientQuote: '"Daniil understood the task immediately and proposed an unconventional visual solution. We worked fast, with minimal revisions — the result exceeded all our expectations."',
-  clientName: 'IRINA',
-  clientRole: 'MARKETING · YANDEX',
+  bio1a: 'AI films and commercial video — ',
+  bio1b: 'from brief to final file in 5–7 days',
+  bio1c: '. No film crew, no bloated budget. Working with brands and agencies worldwide — based in Moscow, serving Europe and Asia.',
+  bio2: 'Full AI production since August 2025: script, generation, edit, color, sound — turnkey. Studio-level quality, delivered in days, not weeks.',
+  quote: '"Not just video — cinematic thinking, executed through neural networks."',
+  clientQuote: '',
+  clientName: '',
+  clientRole: '',
+  testimonials: [
+    ['IRINA', '"Understood the brief immediately. The final film exceeded our expectations — on time."'],
+    ['MIKHAIL', '"We worked remotely but communication was clear. The film nailed our goal on the first try."'],
+    ['ANNA', '"Fast, high-quality, and he proposed a solution we hadn\'t even thought of."'],
+    ['DMITRY', '"Three times cheaper than traditional production — with a better result."'],
+    ['KARINA', '"We\'ve worked together twice now. No unnecessary revisions, always on deadline."'],
+  ],
   stats: [
     ['5+', 'BRANDS', 'Yandex, Lit Energy, Coca-Cola et al.'],
     ['2024', 'KUDINOV FILMS', 'Studio founded'],

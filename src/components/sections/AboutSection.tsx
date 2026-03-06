@@ -8,9 +8,7 @@ interface AboutTranslations {
   bio1c: string
   bio2: string
   quote: string
-  clientQuote: string
-  clientName: string
-  clientRole: string
+  testimonials: [string, string][]
   stats: [string, string, string][]
 }
 
@@ -18,8 +16,45 @@ interface AboutSectionProps {
   isMobile: boolean
   t: AboutTranslations
 }
-
+import { useState, useEffect } from 'react'
 import { Reveal } from '../Reveal'
+
+function TestimonialSlider({ items }: { items: [string, string][] }) {
+  const [idx, setIdx] = useState(0)
+  const [phase, setPhase] = useState<'visible' | 'exit' | 'enter'>('visible')
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setPhase('exit')
+      setTimeout(() => {
+        setIdx(i => (i + 1) % items.length)
+        setPhase('enter')
+        setTimeout(() => setPhase('visible'), 30)
+      }, 380)
+    }, 4500)
+    return () => clearInterval(t)
+  }, [items.length])
+
+  const style: React.CSSProperties = {
+    opacity: phase === 'exit' ? 0 : 1,
+    transform: phase === 'exit' ? 'translateX(24px)' : phase === 'enter' ? 'translateX(-24px)' : 'translateX(0)',
+    transition: phase !== 'enter' ? 'opacity 0.38s ease, transform 0.38s ease' : 'none',
+  }
+
+  return (
+    <div style={{ padding: '20px 24px', background: '#060606', border: '1px solid #1e1e1e', overflow: 'hidden' }}>
+      <div style={style}>
+        <p style={{ color: '#999', fontSize: '13px', lineHeight: '1.8', fontStyle: 'italic', margin: '0 0 14px' }}>
+          {items[idx][1]}
+        </p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ width: '24px', height: '1px', background: '#333' }} />
+          <p style={{ color: '#666', fontSize: '9px', letterSpacing: '0.3em', margin: 0 }}>{items[idx][0]}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 
 function ClientCycler({ clients }: { clients: string[] }) {
@@ -154,21 +189,9 @@ export function AboutSection({ isMobile, t }: AboutSectionProps) {
                   {t.quote}
                 </p>
               </div>
-              {/* Client quote */}
-              <div style={{
-                marginTop: '28px', padding: '20px 24px',
-                background: '#060606', border: '1px solid #1e1e1e',
-              }}>
-                <p style={{ color: '#999', fontSize: '13px', lineHeight: '1.8', fontStyle: 'italic', margin: '0 0 12px' }}>
-                  {t.clientQuote}
-                </p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <div style={{ width: '24px', height: '1px', background: '#333' }} />
-                  <div>
-                    <p style={{ color: '#888', fontSize: '10px', letterSpacing: '0.25em', margin: '0 0 2px' }}>{t.clientName}</p>
-                    <p style={{ color: '#444', fontSize: '9px', letterSpacing: '0.3em', margin: 0 }}>{t.clientRole}</p>
-                  </div>
-                </div>
+              {/* Testimonials */}
+              <div style={{ marginTop: '28px' }}>
+                <TestimonialSlider items={t.testimonials} />
               </div>
             </Reveal>
           </div>
