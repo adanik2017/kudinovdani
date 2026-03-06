@@ -20,40 +20,38 @@ interface AboutSectionProps {
 }
 
 import { Reveal } from '../Reveal'
-import { useState, useEffect } from 'react'
+
 
 function ClientCycler({ clients }: { clients: string[] }) {
-  const [idx, setIdx] = useState(0)
-  const [visible, setVisible] = useState(true)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setVisible(false)
-      setTimeout(() => {
-        setIdx(i => (i + 1) % clients.length)
-        setVisible(true)
-      }, 300)
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [clients.length])
+  const items = [...clients, ...clients]
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', height: '20px' }}>
-      <span style={{ color: '#333', fontSize: '9px', letterSpacing: '0.15em' }}>▶</span>
-      <span
-        className="brand"
+    <div style={{ overflow: 'hidden', position: 'relative' }}>
+      <div
         style={{
-          color: '#fff',
-          fontSize: '13px',
-          letterSpacing: '0.25em',
-          opacity: visible ? 1 : 0,
-          transform: visible ? 'translateY(0)' : 'translateY(-6px)',
-          transition: 'opacity 0.3s ease, transform 0.3s ease',
-          display: 'inline-block',
+          display: 'flex',
+          gap: '40px',
+          width: 'max-content',
+          animation: 'clientScroll 12s linear infinite',
         }}
       >
-        {clients[idx]}
-      </span>
+        {items.map((c, i) => (
+          <span
+            key={i}
+            className="brand"
+            style={{ color: '#555', fontSize: '12px', letterSpacing: '0.25em', whiteSpace: 'nowrap', flexShrink: 0 }}
+          >
+            {c}
+            <span style={{ color: '#222', marginLeft: '40px' }}>·</span>
+          </span>
+        ))}
+      </div>
+      <style>{`
+        @keyframes clientScroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
     </div>
   )
 }
