@@ -23,6 +23,7 @@ interface Translations {
   projCount: (n: number) => string
   bioRole: string
   badges: string[]
+  clients: string[]
   bio1a: string
   bio1b: string
   bio1c: string
@@ -70,6 +71,7 @@ const ru: Translations = {
   projCount: (n) => (n === 1 ? 'ПРОЕКТ' : 'ПРОЕКТА'),
   bioRole: 'РЕЖИССЁР · МОСКВА',
   badges: ['ЯНДЕКС', 'КИНОСТУДИИ', 'БРЕНДЫ', 'ИИ с 2025'],
+  clients: ['COCA-COLA', 'LIT ENERGY', 'JACOBS MONARCH', 'ECLIPSE', 'KVINS', 'ЯНДЕКС'],
   bio1a: 'Создаю ИИ-ролики и рекламные видео — ',
   bio1b: 'для брендов и агентств',
   bio1c: ' по всему миру: от небольших проектов до крупных рекламных кампаний. Работаю из Москвы, сотрудничаю с клиентами из Европы и Азии.',
@@ -136,6 +138,7 @@ const en: Translations = {
   projCount: (n) => (n === 1 ? 'PROJECT' : 'PROJECTS'),
   bioRole: 'DIRECTOR · MOSCOW',
   badges: ['YANDEX', 'FILM STUDIOS', 'BRANDS', 'AI SINCE 2025'],
+  clients: ['COCA-COLA', 'LIT ENERGY', 'JACOBS MONARCH', 'ECLIPSE', 'KVINS', 'YANDEX'],
   bio1a: 'I create AI video production and commercial films — ',
   bio1b: 'for brands and agencies',
   bio1c: ' worldwide: from independent projects to large-scale ad campaigns. Based in Moscow, working with clients across Europe and Asia.',
