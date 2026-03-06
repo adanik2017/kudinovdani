@@ -7,6 +7,7 @@ import { ProjectsSection } from './components/sections/ProjectsSection'
 import { AboutSection } from './components/sections/AboutSection'
 import { ServicesSection } from './components/sections/ServicesSection'
 import { ContactSection } from './components/sections/ContactSection'
+import { FAQSection } from './components/sections/FAQSection'
 import { PrivacySection } from './components/sections/PrivacySection'
 import { Footer } from './components/sections/Footer'
 import { projects, CATEGORIES } from './data/projects'
@@ -168,6 +169,8 @@ export function App() {
               <ServicesSection isMobile={isMobile} t={t} />
 
               <ContactSection isMobile={isMobile} t={t} />
+
+              <FAQSection isMobile={isMobile} t={t} />
 
               <PrivacySection lang={lang} isMobile={isMobile} />
 

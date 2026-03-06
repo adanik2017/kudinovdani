@@ -16,6 +16,7 @@ interface NavigationProps {
     projCount: (n: number) => string
     about: string
     contact: string
+    faq: string
     categories: string
     navigation: string
     discuss: string
@@ -70,7 +71,7 @@ export function Navigation({
             </span>
           )}
 
-          {!isMobile && [['#about', t.about], ['#contact', t.contact]].map(([h, l]) => (
+          {!isMobile && [['#about', t.about], ['#contact', t.contact], ['#faq', t.faq]].map(([h, l]) => (
             <a
               key={h}
               href={h}
@@ -176,7 +177,7 @@ export function Navigation({
               <p style={{ color: '#333', fontSize: '8px', letterSpacing: '0.4em', marginBottom: '12px', marginTop: '8px' }}>
                 {t.navigation}
               </p>
-              {[['#about', t.about], ['#contact', t.contact]].map(([h, l]) => (
+              {[['#about', t.about], ['#contact', t.contact], ['#faq', t.faq]].map(([h, l]) => (
                 <a
                   key={h}
                   href={h}

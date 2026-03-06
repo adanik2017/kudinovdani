@@ -47,6 +47,8 @@ interface Translations {
   ctaFilmHeading: string
   ctaFilmSub: string
   email: string
+  faq: string
+  faqItems: [string, string][]
 }
 
 const ru: Translations = {
@@ -114,14 +116,25 @@ const ru: Translations = {
     ['08', 'САУНДТРЕК И ЗВУК', 'Оригинальный AI-саундтрек (Suno), SFX-дизайн и сведение звука для любого формата.', null],
     ['09', 'ТИЗЕР / ТРЕЙЛЕР', 'Кинематографический тизер или трейлер для фильма, сериала, игры, события.', null],
   ],
-  ctaNote: 'Ответим в течение часа',
+  ctaNote: 'Концепция — бесплатно',
   startProject: 'НАЧАТЬ ПРОЕКТ',
   ctaLines: ['СОЗДАДИМ', 'ЧТО-ТО', 'ВМЕСТЕ'],
-  ctaDesc: 'Напишите в Telegram — обсудим задачу, сроки и формат. Отвечаем в течение часа.',
+  ctaDesc: 'Напишите задачу — пришлю концепцию бесплатно. Обсудим формат, хронометраж и бюджет.',
   telegram: 'НАПИСАТЬ В TELEGRAM',
   ctaFilmHeading: 'ПОНРАВИЛСЯ РОЛИК?',
   ctaFilmSub: 'Обсудим твой проект — напишите в Telegram, ответим в течение часа.',
   email: 'НАПИСАТЬ НА ПОЧТУ',
+  faq: 'ВОПРОСЫ',
+  faqItems: [
+    ['Сколько стоит?', 'Стоимость зависит от формата, хронометража и сложности. Напишите задачу в Telegram — пришлю расчёт и концепцию бесплатно.'],
+    ['Как долго делается ролик?', 'Сроки обсуждаем на этапе брифа — зависит от загруженности и сложности. Всегда говорю честно, никаких размытых обещаний.'],
+    ['Нужно ли мне что-то готовить?', 'Достаточно описать задачу: продукт, цель, примерные референсы. Сценарий, раскадровка, производство — беру на себя.'],
+    ['Можно вносить правки?', 'Да. Правки после первого показа включены в стоимость. Работаем до результата, который вас устраивает.'],
+    ['Вы работаете с зарубежными клиентами?', 'Да, работаю с клиентами из Европы и Азии. Коммуникация на русском и английском, оплата в разных валютах.'],
+    ['Чем ИИ отличается от обычного продакшна?', 'Нет съёмочной группы, аренды площадки, актёров. Только концепция, генерация и постпродакшн. Кинематографическое видео без раздутого бюджета.'],
+    ['Какие права на ролик я получаю?', 'После оплаты — полные права на использование: соцсети, реклама, ТВ, везде. Без ограничений.'],
+    ['Что если результат мне не понравится?', 'Перед стартом производства вы утверждаете концепцию и раскадровку. Неожиданностей не бывает — всё согласовано заранее.'],
+  ],
   process: 'КАК МЫ РАБОТАЕМ',
   steps: [
     ['01', 'БРИФ', 'Пишете задачу в Telegram — продукт, цель, референсы. Можно голосом. Отвечаем в течение часа.'],
@@ -195,14 +208,25 @@ const en: Translations = {
     ['08', 'SOUNDTRACK & SOUND', 'Original AI soundtrack (Suno), SFX design, and audio mix for any format.', null],
     ['09', 'TEASER / TRAILER', 'A cinematic teaser or trailer for a film, series, game, or event.', null],
   ],
-  ctaNote: "We'll reply within an hour",
+  ctaNote: 'Concept — free of charge',
   startProject: 'START A PROJECT',
   ctaLines: ["LET'S CREATE", 'SOMETHING', 'TOGETHER'],
-  ctaDesc: "Write on Telegram — we'll discuss the task, timeline, and format. We reply within an hour.",
+  ctaDesc: "Send me your brief — I'll send a concept for free. We'll discuss format, timeline and budget.",
   telegram: 'WRITE ON TELEGRAM',
   ctaFilmHeading: 'LIKED THE FILM?',
   ctaFilmSub: "Let's discuss your project — write on Telegram or email, we reply within an hour.",
   email: 'SEND AN EMAIL',
+  faq: 'FAQ',
+  faqItems: [
+    ['How much does it cost?', 'The price depends on the format, duration, and complexity. Send your brief on Telegram — I\'ll send a quote and a free concept.'],
+    ['How long does a project take?', 'We discuss timelines at the briefing stage — it depends on workload and complexity. I always give honest estimates, no vague promises.'],
+    ['What do I need to prepare?', 'Just describe your task: the product, goal, and rough references. Script, storyboard, production — I handle everything else.'],
+    ['Can I request revisions?', 'Yes. Revisions after the first delivery are included in the price. We work until you\'re fully satisfied.'],
+    ['Do you work with international clients?', 'Yes, I work with clients across Europe and Asia. Communication in Russian and English, payment in various currencies.'],
+    ['How is AI production different?', 'No film crew, no location rentals, no actors. Just concept, generation, and post-production. Cinematic video without an inflated budget.'],
+    ['What rights do I get?', 'After payment — full usage rights: social media, advertising, TV, everywhere. No restrictions.'],
+    ['What if I don\'t like the result?', 'Before production starts, you approve the concept and storyboard. There are no surprises — everything is agreed in advance.'],
+  ],
   process: 'HOW WE WORK',
   steps: [
     ['01', 'BRIEF', 'Send your task on Telegram — product, goal, references. Voice messages work too. We reply within an hour.'],

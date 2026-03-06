@@ -207,19 +207,48 @@ export function ProjectCard({
               </svg>
               {likesDisplay}
             </button>
-            <button
-              onClick={onShare}
-              style={{
-                background: 'none', border: '1px solid #444', color: '#aaa',
-                cursor: 'pointer', fontSize: '9px', letterSpacing: '0.2em',
-                fontFamily: 'inherit', padding: '4px 12px',
-                transition: 'all .2s', whiteSpace: 'nowrap',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#fff' }}
-              onMouseLeave={e => { e.currentTarget.style.color = '#aaa'; e.currentTarget.style.borderColor = '#444' }}
-            >
-              {copied === p.id ? copiedLabel : shareLabel}
-            </button>
+            {copied === p.id ? (
+              <span style={{ color: '#4ade80', fontSize: '9px', letterSpacing: '0.2em', padding: '4px 10px' }}>✓</span>
+            ) : (
+              <div style={{ display: 'flex', gap: '4px' }}>
+                {[
+                  {
+                    label: 'TG',
+                    color: '#229ED9',
+                    getUrl: (url: string) => `https://t.me/share/url?url=${encodeURIComponent(url)}`,
+                  },
+                  {
+                    label: 'WA',
+                    color: '#25D366',
+                    getUrl: (url: string) => `https://wa.me/?text=${encodeURIComponent(url)}`,
+                  },
+                  {
+                    label: 'VK',
+                    color: '#4C75A3',
+                    getUrl: (url: string) => `https://vk.com/share.php?url=${encodeURIComponent(url)}`,
+                  },
+                ].map(({ label, color, getUrl }) => (
+                  <a
+                    key={label}
+                    href={getUrl(window.location.origin + '/project/' + p.id)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      width: '26px', height: '26px',
+                      border: '1px solid #333', color: '#666',
+                      textDecoration: 'none', fontSize: '8px', letterSpacing: '0.1em',
+                      fontFamily: 'inherit', transition: 'all .2s',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = color; e.currentTarget.style.color = color }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = '#333'; e.currentTarget.style.color = '#666' }}
+                  >
+                    {label}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
