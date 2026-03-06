@@ -76,7 +76,7 @@ export function AboutSection({ isMobile, t }: AboutSectionProps) {
             marginBottom: isMobile ? '56px' : '80px',
           }}>
             {/* LEFT — avatar + name */}
-            <Reveal delay={0} style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+            <Reveal delay={0} style={{ display: 'flex', flexDirection: 'column', gap: '28px', minWidth: 0, overflow: 'hidden' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
                 {/* Avatar with glow ring */}
                 <div style={{ position: 'relative', flexShrink: 0 }}>
@@ -132,7 +132,7 @@ export function AboutSection({ isMobile, t }: AboutSectionProps) {
               </div>
 
               {/* Clients */}
-              <div style={{ overflow: 'hidden' }}>
+              <div style={{ overflow: 'hidden', minWidth: 0 }}>
                 <p style={{ color: '#333', fontSize: '9px', letterSpacing: '0.4em', marginBottom: '8px' }}>КЛИЕНТЫ</p>
                 <ClientCycler clients={t.clients} />
               </div>
