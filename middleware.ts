@@ -48,6 +48,11 @@ const projects: Record<number, { title: string; desc: string; image: string }> =
     desc: 'Рекламный ролик Jacobs Monarch — съёмка на Sony FX3 и ИИ-генерация.',
     image: `${CDN}/Jacobs%20monarch/cover.webp`,
   },
+  10: {
+    title: 'KVINS',
+    desc: 'Имиджевый ИИ-ролик для бренда KVINS.',
+    image: `${CDN}/Kvins/cover.webp`,
+  },
 }
 
 export const config = {
