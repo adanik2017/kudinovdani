@@ -20,6 +20,43 @@ interface AboutSectionProps {
 }
 
 import { Reveal } from '../Reveal'
+import { useState, useEffect } from 'react'
+
+function ClientCycler({ clients }: { clients: string[] }) {
+  const [idx, setIdx] = useState(0)
+  const [visible, setVisible] = useState(true)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisible(false)
+      setTimeout(() => {
+        setIdx(i => (i + 1) % clients.length)
+        setVisible(true)
+      }, 300)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [clients.length])
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', height: '20px' }}>
+      <span style={{ color: '#333', fontSize: '9px', letterSpacing: '0.15em' }}>▶</span>
+      <span
+        className="brand"
+        style={{
+          color: '#fff',
+          fontSize: '13px',
+          letterSpacing: '0.25em',
+          opacity: visible ? 1 : 0,
+          transform: visible ? 'translateY(0)' : 'translateY(-6px)',
+          transition: 'opacity 0.3s ease, transform 0.3s ease',
+          display: 'inline-block',
+        }}
+      >
+        {clients[idx]}
+      </span>
+    </div>
+  )
+}
 
 export function AboutSection({ isMobile, t }: AboutSectionProps) {
   return (
@@ -102,17 +139,7 @@ export function AboutSection({ isMobile, t }: AboutSectionProps) {
               {/* Clients */}
               <div>
                 <p style={{ color: '#333', fontSize: '9px', letterSpacing: '0.4em', marginBottom: '10px' }}>КЛИЕНТЫ</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                  {t.clients.map(c => (
-                    <span
-                      key={c}
-                      className="brand"
-                      style={{ color: '#555', fontSize: '11px', letterSpacing: '0.2em', padding: '4px 0', marginRight: '8px' }}
-                    >
-                      {c}
-                    </span>
-                  ))}
-                </div>
+                <ClientCycler clients={t.clients} />
               </div>
             </Reveal>
 
