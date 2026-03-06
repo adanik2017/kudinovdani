@@ -55,7 +55,7 @@ export function PrivacySection({ lang, isMobile }: PrivacySectionProps) {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <span style={{ display: 'block', width: '24px', height: '1px', background: '#333' }} />
-          <span style={{ color: '#666', fontSize: '9px', letterSpacing: '0.55em' }}>{label}</span>
+          <span style={{ color: '#666', fontSize: '11px', letterSpacing: '0.4em' }}>{label}</span>
         </div>
         <span style={{
           color: '#555', fontSize: '18px', lineHeight: 1,

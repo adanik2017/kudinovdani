@@ -20,16 +20,19 @@ export function FAQSection({ isMobile, t }: FAQSectionProps) {
           width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           padding: isMobile ? '18px 20px' : '22px 48px',
           background: 'none', border: 'none', cursor: 'pointer',
+          borderBottom: sectionOpen ? '1px solid #1a1a1a' : 'none',
         }}
+        onMouseEnter={e => e.currentTarget.style.background = '#060606'}
+        onMouseLeave={e => e.currentTarget.style.background = 'none'}
       >
-        <span style={{ color: '#444', fontSize: '9px', letterSpacing: '0.4em', fontFamily: 'inherit' }}>
-          {t.faq}
-        </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <span style={{ display: 'block', width: '24px', height: '1px', background: '#333' }} />
+          <span style={{ color: '#666', fontSize: '11px', letterSpacing: '0.4em', fontFamily: 'inherit' }}>{t.faq}</span>
+        </div>
         <span style={{
-          color: '#333', fontSize: '16px',
-          transform: sectionOpen ? 'rotate(45deg)' : 'none',
-          transition: 'transform 0.3s ease',
-          display: 'inline-block',
+          color: '#555', fontSize: '18px', lineHeight: 1,
+          transition: 'transform 0.3s', display: 'block',
+          transform: sectionOpen ? 'rotate(45deg)' : 'rotate(0deg)',
         }}>+</span>
       </button>
 
