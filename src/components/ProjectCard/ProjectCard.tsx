@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { Project, Language } from '../../types'
 
 interface ProjectCardProps {
@@ -30,6 +30,15 @@ export function ProjectCard({
   const views = currentViews >= 1000
     ? `${(currentViews / 1000).toFixed(1).replace('.0', '')}K`
     : currentViews
+
+  const baseLikes = Math.floor(p.views * 0.07) + (p.id * 3)
+  const likeKey = `liked_${p.id}`
+  const [liked, setLiked] = useState(() => localStorage.getItem(likeKey) === '1')
+  const likesCount = baseLikes + (liked ? 1 : 0)
+  const likesDisplay = likesCount >= 1000
+    ? `${(likesCount / 1000).toFixed(1).replace('.0', '')}K`
+    : likesCount
+
   const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -174,19 +183,44 @@ export function ProjectCard({
               </span>
             ))}
           </div>
-          <button
-            onClick={onShare}
-            style={{
-              background: 'none', border: '1px solid #444', color: '#aaa',
-              cursor: 'pointer', fontSize: '9px', letterSpacing: '0.2em',
-              fontFamily: 'inherit', padding: '4px 12px', flexShrink: 0,
-              transition: 'all .2s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#fff' }}
-            onMouseLeave={e => { e.currentTarget.style.color = '#aaa'; e.currentTarget.style.borderColor = '#444' }}
-          >
-            {copied === p.id ? copiedLabel : shareLabel}
-          </button>
+          <div style={{ display: 'flex', gap: '6px', flexShrink: 0 }}>
+            <button
+              onClick={e => {
+                e.stopPropagation()
+                const next = !liked
+                setLiked(next)
+                localStorage.setItem(likeKey, next ? '1' : '0')
+              }}
+              style={{
+                display: 'flex', alignItems: 'center', gap: '5px',
+                background: 'none', border: '1px solid ' + (liked ? '#e54' : '#444'),
+                color: liked ? '#e54' : '#888',
+                cursor: 'pointer', fontSize: '9px', letterSpacing: '0.15em',
+                fontFamily: 'inherit', padding: '4px 10px', flexShrink: 0,
+                transition: 'all .2s',
+              }}
+              onMouseEnter={e => { if (!liked) { e.currentTarget.style.color = '#e54'; e.currentTarget.style.borderColor = '#e54' }}}
+              onMouseLeave={e => { if (!liked) { e.currentTarget.style.color = '#888'; e.currentTarget.style.borderColor = '#444' }}}
+            >
+              <svg width="11" height="11" viewBox="0 0 24 24" fill={liked ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.8">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              {likesDisplay}
+            </button>
+            <button
+              onClick={onShare}
+              style={{
+                background: 'none', border: '1px solid #444', color: '#aaa',
+                cursor: 'pointer', fontSize: '9px', letterSpacing: '0.2em',
+                fontFamily: 'inherit', padding: '4px 12px', flexShrink: 0,
+                transition: 'all .2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#fff' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#aaa'; e.currentTarget.style.borderColor = '#444' }}
+            >
+              {copied === p.id ? copiedLabel : shareLabel}
+            </button>
+          </div>
         </div>
       </div>
     </div>
