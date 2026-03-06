@@ -173,7 +173,7 @@ export function ProjectCard({
           {description}
         </p>
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px', minHeight: '28px' }}>
-          <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', flex: 1 }}>
+          <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', maxWidth: '50%' }}>
             {(p.tools || []).map(tool => (
               <span
                 key={tool}
