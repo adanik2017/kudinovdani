@@ -1,3 +1,9 @@
+declare global {
+  interface Window {
+    ym?: (id: number, method: string, goal: string, params?: Record<string, string>) => void
+  }
+}
+
 export interface StoryboardFrame {
   src: string
   label: string

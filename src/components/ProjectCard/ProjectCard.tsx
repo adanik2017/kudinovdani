@@ -214,6 +214,9 @@ export function ProjectCard({
                 const next = !liked
                 setLiked(next)
                 localStorage.setItem(likeKey, next ? '1' : '0')
+                if (next && typeof window.ym === 'function') {
+                  window.ym(107083695, 'reachGoal', 'like', { project: p.title })
+                }
               }}
               style={{
                 display: 'flex', alignItems: 'center', gap: '5px',
@@ -232,7 +235,12 @@ export function ProjectCard({
               {likesDisplay}
             </button>
             <button
-              onClick={onShare}
+              onClick={e => {
+                onShare(e)
+                if (typeof window.ym === 'function') {
+                  window.ym(107083695, 'reachGoal', 'share', { project: p.title })
+                }
+              }}
               style={{
                 background: 'none', border: '1px solid #444', color: '#aaa',
                 cursor: 'pointer', fontSize: '9px', letterSpacing: '0.2em',
