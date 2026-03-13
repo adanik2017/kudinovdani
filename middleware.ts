@@ -3,6 +3,11 @@ const BOT = /TelegramBot|Twitterbot|facebookexternalhit|WhatsApp|vkShare|LinkedI
 const CDN = 'https://pub-c86678aba1ff49b582b0c2a2947f259c.r2.dev'
 
 const projects: Record<number, { title: string; desc: string; image: string }> = {
+  11: {
+    title: 'ФБС',
+    desc: 'Имиджевый ролик для ФБС — от пшеничных полей до дронового шоу в небе.',
+    image: `${CDN}/%D0%A4%D0%91%D0%A1/cover.webp`,
+  },
   9: {
     title: 'МЕЖДУНАРОДНАЯ ТОРГОВАЯ КОМПАНИЯ',
     desc: 'От пшеничных полей до торговых маршрутов Москва–Гуанчжоу. Масштаб одной компании.',
